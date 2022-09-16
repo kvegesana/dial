@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".ScreenB"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/userId"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/taskBtn1"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Linear Layout - Talkback"
+        android:onClick="openCVariation"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/taskBtn2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Hierarchical Layout - Talkback"
+        android:onClick="openDVariation"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/taskBtn3"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Grid Layout - Talkback"
+        android:onClick="openEVariation"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/taskBtn4"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Linear Layout - Dial"
+        android:onClick="openCTTSVariation"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/taskBtn5"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Hierarchical Layout - Dial"
+        android:onClick="openDTTSVariation"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/taskBtn6"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Grid Layout - Dial"
+        android:onClick="openETTSVariation"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

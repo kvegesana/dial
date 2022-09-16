@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".VariationC"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/userId"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/taskBtn1"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 1"
+        android:onClick="openScreenC_1"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/taskBtn2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 2"
+        android:onClick="openScreenC_2"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/taskBtn3"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 3"
+        android:onClick="openScreenC_3"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/taskBtn4"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 4"
+        android:onClick="openScreenC_4"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/taskBtn5"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 5"
+        android:onClick="openScreenC_5"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/taskBtn6"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 6"
+        android:onClick="openScreenC_6"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/taskBtn7"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 7"
+        android:onClick="openScreenC_7"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/taskBtn8"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 8"
+        android:onClick="openScreenC_8"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/taskBtn9"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 9"
+        android:onClick="openScreenC_9"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/taskBtn10"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Variation 10"
+        android:onClick="openScreenC_10"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>
