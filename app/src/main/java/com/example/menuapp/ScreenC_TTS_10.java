@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class ScreenC_TTS_10 extends BaseActivity {
 
@@ -25,6 +26,8 @@ public class ScreenC_TTS_10 extends BaseActivity {
     String userid = null;
     TextView tv;
     boolean outOfBounds = false;
+    int numberOfInteractions;
+    long t1,t2;
 
     public static final String SBU_ACTION = "sbuCustomGesture";
     public static final String EXTRA_SBU_ACTION = "sbuGestureAction";
@@ -34,6 +37,8 @@ public class ScreenC_TTS_10 extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
+        numberOfInteractions = 0;
+        t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         textToSpeech = new TTS();
         textToSpeech.initialize(this,v);
@@ -64,6 +69,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
 
 
     public void goLeft(View view) {
+        numberOfInteractions+=1;
         if(isInitial){
             textToSpeech.playErrorSound();
             outOfBounds = true;
@@ -93,6 +99,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
     }
 
     public void goRight(View view) {
+        numberOfInteractions+=1;
         if(isInitial){
             curIndex = -1;
             isInitial = false;
@@ -124,6 +131,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
 
 
     public void onClick(View view) {
+        numberOfInteractions+=1;
         if(!isInitial) {
             if (curIndex >= 0 && curIndex < 16) {
                 tv = (TextView) lv.getChildAt(curIndex);
@@ -134,7 +142,11 @@ public class ScreenC_TTS_10 extends BaseActivity {
             }
             textToSpeech.speakSelectedTextView(tv);
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation10 " + "Button clicked: Click " + "Item selected: " + tv.getText());
-
+            String target = returnCorrectTarget(this.getLocalClassName());
+            if(tv.getText().equals(target)) {
+                t2 = new Date().getTime();
+                log.append2(userid, " Screen: Linear Menu Dial Variation10 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
+            }
         }
     }
 

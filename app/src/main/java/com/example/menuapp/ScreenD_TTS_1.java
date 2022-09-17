@@ -42,6 +42,9 @@ public class ScreenD_TTS_1 extends BaseActivity {
     TTS textToSpeech;
     Vibrator v;
     String userid = null;
+    int numberOfInteractions;
+    long t1,t2;
+
 
     public static final String SBU_ACTION = "sbuCustomGesture";
     public static final String EXTRA_SBU_ACTION = "sbuGestureAction";
@@ -51,7 +54,8 @@ public class ScreenD_TTS_1 extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        numberOfInteractions = 0;
+        t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         textToSpeech = new TTS();
         textToSpeech.initialize(this,v);
@@ -140,7 +144,7 @@ public class ScreenD_TTS_1 extends BaseActivity {
     }
 
     public void onClick(View view){
-
+        numberOfInteractions+=1;
         System.out.println("First Menu "+isFirstMenu);
         System.out.println("Counter "+counter);
         System.out.println(lv1_1.getChildCount() + " "+ lv1_2.getChildCount());
@@ -199,10 +203,14 @@ public class ScreenD_TTS_1 extends BaseActivity {
             final ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
             String target = returnCorrectTarget(this.getLocalClassName());
             System.out.println(target+" "+this.getLocalClassName());
-            if(tv.getText().equals(target))
-                worker.schedule(task, 2, TimeUnit.SECONDS);
+            if(tv.getText().equals(target)) {
+                worker.schedule(task, 2, TimeUnit.SECONDS);t2 = new Date().getTime();
+                t2 = new Date().getTime();
+                log.append2(userid, " Screen: Hierarchical Menu Dial Variation1 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
+
+            }
         }
-        log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Hierarchical Menu Dial Variation2 " + "Button clicked: Click " + "Item selected: " + tv.getText());
+        log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Click " + "Item selected: " + tv.getText());
 
         if(counter == 0){
             isFirstMenu = false;
@@ -212,6 +220,7 @@ public class ScreenD_TTS_1 extends BaseActivity {
     }
 
     public void back(View view){
+        numberOfInteractions+=1;
         if(counter == 1){
             isFirstMenu = true;
         }
@@ -229,12 +238,13 @@ public class ScreenD_TTS_1 extends BaseActivity {
             textToSpeech.speakTextView(tv);
         }
         System.out.println("Selected " + curIndexList1 + " " + tv.getText().toString());
-        log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Hierarchical Menu Dial Variation2 " + "Button clicked: Back " + "Item selected: " + tv.getText());
+        log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Back " + "Item selected: " + tv.getText());
 
         curIndexList2 = 0;
     }
 
     public void goLeft(View view) {
+        numberOfInteractions+=1;
         clicks.clear();
         if(isFirstMenu){
 
@@ -247,7 +257,7 @@ public class ScreenD_TTS_1 extends BaseActivity {
             textToSpeech.speakTextView(tv);
             System.out.println("goLeft" + curIndexList1 + " " + tv.getText());
 //            populate(curIndexList1,curIndexList1 == 0 ? fruits: curIndexList1 == 1 ? cars:curIndexList1 == 2 ? colors:countries,lv1_2);
-            log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation2 " + "Button clicked: Left " + "Item selected: " + tv.getText());
+            log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Left " + "Item selected: " + tv.getText());
         }
         else {
             if(curIndexList2 > 0){
@@ -255,18 +265,19 @@ public class ScreenD_TTS_1 extends BaseActivity {
                 TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
                 textToSpeech.speakTextView(tv);
                 System.out.println("goLeft" + curIndexList2 + " " + tv.getText());
-                log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation2 " + "Button clicked: Left " + "Item selected: " + tv.getText());
+                log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Left " + "Item selected: " + tv.getText());
 
             }else{
                 textToSpeech.playErrorSound();
                 System.out.println("goLeft " + curIndexList2 + " Out of bounds") ;
                 curIndexList2 = 10;
-                log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation2 " + "Button clicked: Left " + "Item selected: " + tv.getText());
+                log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Left " + "Item selected: " + tv.getText());
             }
         }
     }
 
     public void goRight(View view) {
+        numberOfInteractions+=1;
         clicks.clear();
         if(isFirstMenu){
 
@@ -280,7 +291,7 @@ public class ScreenD_TTS_1 extends BaseActivity {
             textToSpeech.speakTextView(tv);
             System.out.println("goRight " + curIndexList1 + " " + tv.getText());
 //            populate(curIndexList1,curIndexList1 == 0 ? fruits: curIndexList1 == 1 ? cars:curIndexList1 == 2 ? colors:countries,lv1_2);
-            log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Hierarchical Menu Dial Variation2 " + "Button clicked: Right " + "Item selected: " + tv.getText());
+            log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: " + tv.getText());
         }
         else{
 
@@ -289,12 +300,12 @@ public class ScreenD_TTS_1 extends BaseActivity {
                 TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
                 textToSpeech.speakTextView(tv);
                 System.out.println("goRight " + curIndexList2 + " " + tv.getText());
-                log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation2 " + "Button clicked: Right " + "Item selected: " + tv.getText());
+                log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: " + tv.getText());
             }else{
                 textToSpeech.playErrorSound();
                 System.out.println("goRight " + curIndexList2 + " Out of bounds");
                 curIndexList2 = 5;
-                log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Hierarchical Menu Dial Variation2 " + "Button clicked: Right " + "Item selected: Out of bounds");
+                log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: Out of bounds");
             }
         }
 
