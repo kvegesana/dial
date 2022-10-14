@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ScreenE_TTS_1 extends BaseActivity {
 
-    LinearLayout lv, lv1, lv2, lv3, lv4, lv5, lv6, lv7;
+    LinearLayout lv, lv1, lv2, lv3, lv4, lv5;
     ;
     int curIndex = -1;
     boolean isInitial = true;
@@ -52,10 +52,8 @@ public class ScreenE_TTS_1 extends BaseActivity {
         lv3 = lv.findViewById(R.id.screenE_lv3);
         lv4 = lv.findViewById(R.id.screenE_lv4);
         lv5 = lv.findViewById(R.id.screenE_lv5);
-        lv6 = lv.findViewById(R.id.screenE_lv6);
-        lv7 = lv.findViewById(R.id.screenE_lv7);
 
-        totalElements = lv1.getChildCount() + lv2.getChildCount() + lv3.getChildCount() + lv4.getChildCount() + lv5.getChildCount() + lv6.getChildCount() + lv7.getChildCount();
+        totalElements = lv1.getChildCount() + lv2.getChildCount() + lv3.getChildCount() + lv4.getChildCount() + lv5.getChildCount() ;
 
         userid = getIntent().getExtras().getString("UserID");
 
@@ -94,7 +92,7 @@ public class ScreenE_TTS_1 extends BaseActivity {
         } else {
             textToSpeech.playErrorSound();
             System.out.println("goLeft " + curIndex + " Out of bounds");
-            curIndex = totalElements;
+//            curIndex = totalElements;
             log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen:  Grid Menu Dial Variation1 " + "Button clicked: Left " + "Item selected: Out of bounds");
         }
     }
@@ -118,7 +116,7 @@ public class ScreenE_TTS_1 extends BaseActivity {
         } else {
             textToSpeech.playErrorSound();
             System.out.println("goRight " + curIndex + " Out of bounds");
-            curIndex = -1;
+//            curIndex = -1;
             log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen:  Grid Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: Out of bounds");
         }
     }
@@ -130,8 +128,8 @@ public class ScreenE_TTS_1 extends BaseActivity {
             if (curIndex >= 0 && curIndex < totalElements) {
                 tv = getTextView();
             } else if (curIndex < 0) {
-                tv = (TextView) lv7.getChildAt(1);
-            } else {
+                tv = (TextView) lv5.getChildAt(1);
+            }  else {
                 tv = (TextView) lv1.getChildAt(0);
             }
             textToSpeech.speakSelectedTextView(tv);
@@ -151,6 +149,7 @@ public class ScreenE_TTS_1 extends BaseActivity {
             String target = returnCorrectTarget(this.getLocalClassName());
             System.out.println(target+" "+this.getLocalClassName());
             if(tv.getText().equals(target)) {
+                System.out.println("********************");
                 worker.schedule(task, 2, TimeUnit.SECONDS);
                 t2 = new Date().getTime();
                 log.append2(userid, " Screen: Grid Menu Dial Variation1 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
@@ -161,20 +160,16 @@ public class ScreenE_TTS_1 extends BaseActivity {
     }
 
     public TextView getTextView() {
-        if (curIndex <= 4) {
+        if (curIndex <= 3) {
             tv = (TextView) lv1.getChildAt(curIndex);
-        } else if (curIndex <= 9) {
-            tv = (TextView) lv2.getChildAt(curIndex % 5);
-        } else if (curIndex <= 14) {
-            tv = (TextView) lv3.getChildAt(curIndex % 5);
+        } else if (curIndex <= 7) {
+            tv = (TextView) lv2.getChildAt(curIndex % 4);
+        } else if (curIndex <= 11) {
+            tv = (TextView) lv3.getChildAt(curIndex % 4);
+        } else if (curIndex <= 15) {
+            tv = (TextView) lv4.getChildAt(curIndex % 4);
         } else if (curIndex <= 19) {
-            tv = (TextView) lv4.getChildAt(curIndex % 5);
-        } else if (curIndex <= 24) {
-            tv = (TextView) lv5.getChildAt(curIndex % 5);
-        } else if (curIndex <= 29) {
-            tv = (TextView) lv6.getChildAt(curIndex % 5);
-        } else if (curIndex <= 34) {
-            tv = (TextView) lv7.getChildAt(curIndex % 5);
+            tv = (TextView) lv5.getChildAt(curIndex % 4);
         }
         return tv;
     }

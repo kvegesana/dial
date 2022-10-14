@@ -75,13 +75,13 @@ public class ScreenC_TTS_8 extends BaseActivity {
         if(isInitial){
             textToSpeech.playErrorSound();
             outOfBounds = true;
-            curIndex = 16;
+            //curIndex = 16;
             isInitial = false;
             return;
         }
 
         if(outOfBounds && curIndex == 0) {
-            curIndex = 16;
+            //curIndex = 16;
         }
 
         if(curIndex > 0){
@@ -94,7 +94,7 @@ public class ScreenC_TTS_8 extends BaseActivity {
         }else{
             textToSpeech.playErrorSound();
             System.out.println("goLeft " + curIndex + " Out of bounds") ;
-            curIndex = 16;
+            //curIndex = 16;
             outOfBounds = true;
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation8 " + "Button clicked: Left " + "Item selected: Out of bounds");
         }
@@ -103,14 +103,14 @@ public class ScreenC_TTS_8 extends BaseActivity {
     public void goRight(View view) {
         numberOfInteractions+=1;
         if(isInitial){
-            curIndex = -1;
+            //curIndex = -1;
             isInitial = false;
         }
 
         System.out.println(curIndex + 1 + " " + lv.getChildCount());
 
         if(outOfBounds && curIndex == 16) {
-            curIndex = 0;
+           // curIndex = 0;
         }
 
         if(curIndex < 15){
@@ -125,7 +125,7 @@ public class ScreenC_TTS_8 extends BaseActivity {
         }else{
             textToSpeech.playErrorSound();
             System.out.println("goRight " + curIndex + " Out of bounds");
-            curIndex = -1;
+           // curIndex = -1;
             outOfBounds = true;
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation8 " + "Button clicked: Right " + "Item selected: Out of bounds");
         }

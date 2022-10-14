@@ -7,8 +7,8 @@ public class BaseActivity extends Activity {
             "Orange", "Kiwi", "Pineapple", "Blueberry", "Peach"};
     String[] orderForD = new String[]{"Banana", "Papaya", "Guava", "Watermelon", "Lychee",
             "Mango", "Pear", "Kiwi", "Pineapple", "Peach"};
-    String[] orderForE = new String[]{"Kiwi", "Cherry", "Apple", "Berry", "Melon",
-            "Orange", "Grapes", "Banana", "Mango", "Pear"};
+    String[] orderForE = new String[]{"Green", "Porshe", "UK", "Cyan", "Melon",
+            "India", "Honda", "BMW", "France", "White"};
 
     public String returnCorrectTarget(String className) {
         char order = className.charAt(6);
