@@ -85,9 +85,14 @@ public class ScreenC_TTS_4 extends BaseActivity {
         }
 
         if(curIndex > 0){
+            TextView original = (TextView) lv.getChildAt(curIndex);
+            if(original != null) {
+                original.setBackgroundResource(R.drawable.remove_border);
+            }
             curIndex = curIndex - 1;
             tv = (TextView) lv.getChildAt(curIndex);
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.border);
             outOfBounds = false;
             System.out.println("goLeft" + curIndex + " " + tv.getText());
             log.append(userid,"UserID: "+ userid +  " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation4 " + "Button clicked: Left " + "Item selected: " + tv.getText());
@@ -114,10 +119,15 @@ public class ScreenC_TTS_4 extends BaseActivity {
         }
 
         if(curIndex < lv.getChildCount() - 1){
+            TextView original = (TextView) lv.getChildAt(curIndex);
+            if(original != null) {
+                original.setBackgroundResource(R.drawable.remove_border);
+            }
             curIndex = curIndex + 1;
             tv = (TextView) lv.getChildAt(curIndex);
             System.out.println(getCurrentFocus());
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.border);
             outOfBounds = false;
             System.out.println("goRight " + curIndex + " " + tv.getText());
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Linear Menu Dial Variation4 " + "Button clicked: Right " + "Item selected: " + tv.getText());

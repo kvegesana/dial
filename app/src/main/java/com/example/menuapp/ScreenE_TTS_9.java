@@ -84,9 +84,14 @@ public class ScreenE_TTS_9 extends BaseActivity {
         }
 
         if(curIndex > 0){
+            TextView original = getTextView();
+            if(original != null) {
+                original.setBackgroundResource(R.drawable.rounded_corner);
+            }
             curIndex = curIndex - 1;
             tv = getTextView();
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.rounded_corner_border);
             System.out.println("goLeft" + curIndex + " " + tv.getText());
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Grid Menu Dial Variation9 " + "Button clicked: Left " + "Item selected: " + tv.getText());
 
@@ -106,10 +111,15 @@ public class ScreenE_TTS_9 extends BaseActivity {
         }
 
         if(curIndex < totalElements - 1){
+            TextView original = getTextView();
+            if(original != null) {
+                original.setBackgroundResource(R.drawable.rounded_corner);
+            }
             curIndex = curIndex + 1;
             tv = getTextView();
 
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.rounded_corner_border);
             System.out.println("goRight " + curIndex + " " + tv.getText());
             log.append(userid,"UserID: "+ userid + " " +"Timestamp: " + new Date().getTime() +" " +" Screen: Grid Menu Dial Variation9 " + "Button clicked: Right " + "Item selected: " + tv.getText());
 
