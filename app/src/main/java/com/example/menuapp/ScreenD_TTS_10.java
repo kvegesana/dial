@@ -85,6 +85,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
                 System.out.println("Initial screen D TTS" + tv.getText());
                 textToSpeech.speakTextView(tv);
                 tv.requestFocus();
+                tv.setBackgroundResource(R.drawable.border);
             }
         };
 
@@ -167,6 +168,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
             }
             tv = (TextView) lv1_2.getChildAt(0);
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.border);
         }
         else {
             if(!outOfBounds) {
@@ -224,6 +226,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
             isFirstMenu = true;
             for(int i=0; i<16 ;i++){
                 tv = (TextView) lv1_2.getChildAt(i);
+                tv.setBackgroundResource(R.drawable.remove_border);
                 tv.setText("");
             }
         }
@@ -233,12 +236,15 @@ public class ScreenD_TTS_10 extends BaseActivity {
         if (curIndexList1 >= 0 && curIndexList1 < lv1_1.getChildCount()) {
             TextView tv = (TextView) lv1_1.getChildAt(curIndexList1);
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.border);
         } else if (curIndexList1 < 0) {
             tv = (TextView) lv1_1.getChildAt(lv1_1.getChildCount() - 1);
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.border);
         } else {
             tv = (TextView) lv1_1.getChildAt(0);
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.border);
         }
         System.out.println("Selected " + curIndexList1 + " " + tv.getText().toString());
         log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Hierarchical Menu Dial Variation10 " + "Button clicked: Back " + "Item selected: " + tv.getText());
@@ -252,21 +258,31 @@ public class ScreenD_TTS_10 extends BaseActivity {
         if(isFirstMenu){
 
             if(curIndexList1 > 0) {
+                TextView original = (TextView) lv1_1.getChildAt(curIndexList1);
+                if(original != null) {
+                    original.setBackgroundResource(R.drawable.remove_border);
+                }
                 curIndexList1 = curIndexList1 - 1;
             }else{
                 //curIndexList1 = lv1_1.getChildCount() - 1;
             }
             TextView tv = (TextView) lv1_1.getChildAt(curIndexList1);
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.border);
             System.out.println("goLeft" + curIndexList1 + " " + tv.getText());
             //populate(curIndexList1,curIndexList1 == 0 ? fruits: curIndexList1 == 1 ? cars:curIndexList1 == 2 ? colors:countries,lv1_2);
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation10 " + "Button clicked: Left " + "Item selected: " + tv.getText());
         }
         else {
             if(curIndexList2 > 0){
+                TextView original = (TextView) lv1_2.getChildAt(curIndexList2);
+                if(original != null) {
+                    original.setBackgroundResource(R.drawable.remove_border);
+                }
                 curIndexList2 = curIndexList2 - 1;
                 TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
                 textToSpeech.speakTextView(tv);
+                tv.setBackgroundResource(R.drawable.border);
                 System.out.println("goLeft" + curIndexList2 + " " + tv.getText());
                 log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation10 " + "Button clicked: Left " + "Item selected: " + tv.getText());
 
@@ -285,6 +301,10 @@ public class ScreenD_TTS_10 extends BaseActivity {
         if(isFirstMenu){
 
             if(curIndexList1 < lv1_1.getChildCount() - 1) {
+                TextView original = (TextView) lv1_1.getChildAt(curIndexList1);
+                if(original != null) {
+                    original.setBackgroundResource(R.drawable.remove_border);
+                }
                 curIndexList1 = curIndexList1 + 1;
             }else{
                 //curIndexList1 = 0;
@@ -292,6 +312,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
             }
             TextView tv = (TextView) lv1_1.getChildAt(curIndexList1);
             textToSpeech.speakTextView(tv);
+            tv.setBackgroundResource(R.drawable.border);
             System.out.println("goRight " + curIndexList1 + " " + tv.getText());
             //populate(curIndexList1,curIndexList1 == 0 ? fruits: curIndexList1 == 1 ? cars:curIndexList1 == 2 ? colors:countries,lv1_2);
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Hierarchical Menu Dial Variation10 " + "Button clicked: Right " + "Item selected: " + tv.getText());
@@ -299,9 +320,14 @@ public class ScreenD_TTS_10 extends BaseActivity {
         else{
 
             if(curIndexList2 < 15){
+                TextView original = (TextView) lv1_2.getChildAt(curIndexList2);
+                if(original != null) {
+                    original.setBackgroundResource(R.drawable.remove_border);
+                }
                 curIndexList2 = curIndexList2 + 1;
                 TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
                 textToSpeech.speakTextView(tv);
+                tv.setBackgroundResource(R.drawable.border);
                 System.out.println("goRight " + curIndexList2 + " " + tv.getText());
                 log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation10 " + "Button clicked: Right " + "Item selected: " + tv.getText());
             }else{
