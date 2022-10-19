@@ -96,6 +96,8 @@ public class ScreenE_TTS_1 extends BaseActivity {
 
         } else {
             textToSpeech.playErrorSound();
+            tv = getTextView();
+            textToSpeech.speakTextView(tv);
             System.out.println("goLeft " + curIndex + " Out of bounds");
 //            curIndex = totalElements;
             log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen:  Grid Menu Dial Variation1 " + "Button clicked: Left " + "Item selected: Out of bounds");
@@ -125,6 +127,8 @@ public class ScreenE_TTS_1 extends BaseActivity {
 
         } else {
             textToSpeech.playErrorSound();
+            tv = getTextView();
+            textToSpeech.speakTextView(tv);
             System.out.println("goRight " + curIndex + " Out of bounds");
 //            curIndex = -1;
             log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen:  Grid Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: Out of bounds");

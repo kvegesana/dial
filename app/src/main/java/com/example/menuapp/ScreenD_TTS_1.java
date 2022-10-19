@@ -288,6 +288,8 @@ public class ScreenD_TTS_1 extends BaseActivity {
 
             }else{
                 textToSpeech.playErrorSound();
+                TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
+                textToSpeech.speakTextView(tv);
                 System.out.println("goLeft " + curIndexList2 + " Out of bounds") ;
                 //curIndexList2 = lv1_2.getChildCount();
                 log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Left " + "Item selected: " + tv.getText());
@@ -332,6 +334,8 @@ public class ScreenD_TTS_1 extends BaseActivity {
                 log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: " + tv.getText());
             }else{
                 textToSpeech.playErrorSound();
+                TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
+                textToSpeech.speakTextView(tv);
                 System.out.println("goRight " + curIndexList2 + " Out of bounds");
                // curIndexList2 = -1;
                 log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: Out of bounds");

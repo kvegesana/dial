@@ -98,6 +98,8 @@ public class ScreenC_TTS_7 extends BaseActivity {
             log.append(userid,"UserID: "+ userid +  " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation7 " + "Button clicked: Left " + "Item selected: " + tv.getText());
         }else{
             textToSpeech.playErrorSound();
+            tv = (TextView) lv.getChildAt(curIndex);
+            textToSpeech.speakTextView(tv);
             System.out.println("goLeft " + curIndex + " Out of bounds") ;
             //curIndex = 16;
             outOfBounds = true;
@@ -134,6 +136,8 @@ public class ScreenC_TTS_7 extends BaseActivity {
 
         }else{
             textToSpeech.playErrorSound();
+            tv = (TextView) lv.getChildAt(curIndex);
+            textToSpeech.speakTextView(tv);
             System.out.println("goRight " + curIndex + " Out of bounds");
             //curIndex = -1;
             outOfBounds = true;
