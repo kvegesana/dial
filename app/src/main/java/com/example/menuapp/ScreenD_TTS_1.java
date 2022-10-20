@@ -44,6 +44,7 @@ public class ScreenD_TTS_1 extends BaseActivity {
     String userid = null;
     int numberOfInteractions;
     long t1,t2;
+    String target;
 
 
     public static final String SBU_ACTION = "sbuCustomGesture";
@@ -54,6 +55,7 @@ public class ScreenD_TTS_1 extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        target = returnCorrectTarget(this.getLocalClassName());
         numberOfInteractions = 0;
         t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -177,19 +179,21 @@ public class ScreenD_TTS_1 extends BaseActivity {
                 if (curIndexList2 >= 0 && curIndexList2 < 16) {
                     tv = (TextView) lv1_2.getChildAt(curIndexList2);
                     System.out.println("Selected " + curIndexList2 + " " + tv.getText().toString());
-                } else if(curIndexList2 < 0){
-                    tv = (TextView) lv1_2.getChildAt(15);
-                }else{
-                    tv = (TextView) lv1_2.getChildAt(0);
                 }
-            }else{
-                if(curIndexList2 == 10) {
-                    tv = (TextView) lv1_2.getChildAt(0);
-                }
-                else {
-                    tv = (TextView) lv1_2.getChildAt(15);
-                }
-            }
+//                else if(curIndexList2 < 0){
+//                    tv = (TextView) lv1_2.getChildAt(15);
+//                }else{
+//                    tv = (TextView) lv1_2.getChildAt(0);
+//                }
+       }
+//            else{
+//                if(curIndexList2 == 10) {
+//                    tv = (TextView) lv1_2.getChildAt(0);
+//                }
+//                else {
+//                    tv = (TextView) lv1_2.getChildAt(15);
+//
+//            }
             textToSpeech.speakSelectedTextView(tv);
             Intent intent = new Intent(this, ScreenD_TTS_2.class);
 
@@ -294,6 +298,11 @@ public class ScreenD_TTS_1 extends BaseActivity {
                 //curIndexList2 = lv1_2.getChildCount();
                 log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Left " + "Item selected: " + tv.getText());
             }
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+ tv.getText());
+            TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
+            if(tv.getText().equals(target)){
+                tv.setBackgroundResource(R.color.green);
+            }
         }
     }
 
@@ -339,6 +348,10 @@ public class ScreenD_TTS_1 extends BaseActivity {
                 System.out.println("goRight " + curIndexList2 + " Out of bounds");
                // curIndexList2 = -1;
                 log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Hierarchical Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: Out of bounds");
+            }
+            TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
+            if(tv.getText().equals(target)){
+                tv.setBackgroundResource(R.color.green);
             }
         }
 

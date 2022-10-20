@@ -30,6 +30,7 @@ public class ScreenC_TTS_1 extends BaseActivity {
     boolean outOfBounds = false;
     int numberOfInteractions;
     long t1,t2;
+    String target;
 
     public static final String SBU_ACTION = "sbuCustomGesture";
     public static final String EXTRA_SBU_ACTION = "sbuGestureAction";
@@ -39,6 +40,8 @@ public class ScreenC_TTS_1 extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
+
+        target = returnCorrectTarget(this.getLocalClassName());
         numberOfInteractions = 0;
         t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -105,6 +108,9 @@ public class ScreenC_TTS_1 extends BaseActivity {
             outOfBounds = true;
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation1 " + "Button clicked: Left " + "Item selected: Out of bounds");
         }
+        if(tv.getText().equals(target)){
+            tv.setBackgroundResource(R.color.green);
+        }
     }
 
     public void goRight(View view) {
@@ -143,6 +149,9 @@ public class ScreenC_TTS_1 extends BaseActivity {
             //curIndex = -1;
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: Out of bounds");
         }
+        if(tv.getText().equals(target)){
+            tv.setBackgroundResource(R.color.green);
+        }
     }
 
 
@@ -173,6 +182,7 @@ public class ScreenC_TTS_1 extends BaseActivity {
             String target = returnCorrectTarget(this.getLocalClassName());
             System.out.println(target+" "+this.getLocalClassName());
             if(tv.getText().equals(target)) {
+
                 worker.schedule(task, 2, TimeUnit.SECONDS);
                 t2 = new Date().getTime();
                 log.append2(userid, " Screen: Linear Menu Dial Variation1 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));

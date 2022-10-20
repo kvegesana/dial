@@ -28,6 +28,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
     boolean outOfBounds = false;
     int numberOfInteractions;
     long t1,t2;
+    String target;
 
     public static final String SBU_ACTION = "sbuCustomGesture";
     public static final String EXTRA_SBU_ACTION = "sbuGestureAction";
@@ -36,7 +37,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        target = returnCorrectTarget(this.getLocalClassName());
         numberOfInteractions = 0;
         t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -103,6 +104,9 @@ public class ScreenC_TTS_10 extends BaseActivity {
             outOfBounds = true;
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation10 " + "Button clicked: Left " + "Item selected: Out of bounds");
         }
+        if(tv.getText().equals(target)){
+            tv.setBackgroundResource(R.color.green);
+        }
     }
 
     public void goRight(View view) {
@@ -140,6 +144,9 @@ public class ScreenC_TTS_10 extends BaseActivity {
             //curIndex = -1;
             outOfBounds = true;
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation10 " + "Button clicked: Right " + "Item selected: Out of bounds");
+        }
+        if(tv.getText().equals(target)){
+            tv.setBackgroundResource(R.color.green);
         }
     }
 
