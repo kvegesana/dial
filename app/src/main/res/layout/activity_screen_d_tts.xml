@@ -105,6 +105,7 @@
         </LinearLayout>
         <ScrollView
             android:layout_width="0dp"
+            android:id="@+id/ScrollViewHierarchicalID"
             android:layout_weight="0.56"
             android:layout_height="match_parent"
             android:orientation="vertical">

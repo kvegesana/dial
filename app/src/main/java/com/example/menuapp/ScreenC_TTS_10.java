@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -29,6 +30,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
     int numberOfInteractions;
     long t1,t2;
     String target;
+    ScrollView sv;
 
     public static final String SBU_ACTION = "sbuCustomGesture";
     public static final String EXTRA_SBU_ACTION = "sbuGestureAction";
@@ -53,7 +55,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
         IntentFilter sbu_filter = new IntentFilter();
         sbu_filter.addAction(SBU_ACTION);
         registerReceiver(sbu_receiver, sbu_filter);
-
+        sv = findViewById(R.id.ScrollViewID);
     }
 
     public void onPause(){
@@ -107,6 +109,12 @@ public class ScreenC_TTS_10 extends BaseActivity {
         if(tv.getText().equals(target)){
             tv.setBackgroundResource(R.color.green);
         }
+        if(curIndex > 7){
+            sv.smoothScrollTo(0, sv.getHeight());
+        }
+        if(curIndex <= 7) {
+            sv.smoothScrollTo(0,0);
+        }
     }
 
     public void goRight(View view) {
@@ -147,6 +155,12 @@ public class ScreenC_TTS_10 extends BaseActivity {
         }
         if(tv.getText().equals(target)){
             tv.setBackgroundResource(R.color.green);
+        }
+        if(curIndex > 7){
+            sv.smoothScrollTo(0, sv.getHeight());
+        }
+        if(curIndex <= 7) {
+            sv.smoothScrollTo(0,0);
         }
     }
 

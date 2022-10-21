@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.threeten.bp.LocalDateTime;
@@ -45,6 +46,7 @@ public class ScreenD_TTS_1 extends BaseActivity {
     int numberOfInteractions;
     long t1,t2;
     String target;
+    ScrollView sv;
 
 
     public static final String SBU_ACTION = "sbuCustomGesture";
@@ -74,7 +76,7 @@ public class ScreenD_TTS_1 extends BaseActivity {
         IntentFilter sbu_filter = new IntentFilter();
         sbu_filter.addAction(SBU_ACTION);
         registerReceiver(sbu_receiver, sbu_filter);
-
+        sv = findViewById(R.id.ScrollViewHierarchicalID);
         initial();
     }
 
@@ -303,6 +305,12 @@ public class ScreenD_TTS_1 extends BaseActivity {
             if(tv.getText().equals(target)){
                 tv.setBackgroundResource(R.color.green);
             }
+            if(curIndexList2 > 7){
+                sv.smoothScrollTo(0, sv.getHeight());
+            }
+            if(curIndexList2 <= 7) {
+                sv.smoothScrollTo(0,0);
+            }
         }
     }
 
@@ -352,6 +360,12 @@ public class ScreenD_TTS_1 extends BaseActivity {
             TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
             if(tv.getText().equals(target)){
                 tv.setBackgroundResource(R.color.green);
+            }
+            if(curIndexList2 > 7){
+                sv.smoothScrollTo(0, sv.getHeight());
+            }
+            if(curIndexList2 <= 7) {
+                sv.smoothScrollTo(0,0);
             }
         }
 
