@@ -194,6 +194,9 @@ public class ScreenE_TTS_4 extends BaseActivity {
                 t2 = new Date().getTime();
                 log.append2(userid, " Screen: Grid Menu Dial Variation4 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
             }
+            else {
+                tv.setBackgroundResource(R.color.red);
+            }
         }
     }
 

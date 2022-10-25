@@ -221,6 +221,9 @@ public class ScreenD_TTS_10 extends BaseActivity {
             t2 = new Date().getTime();
             log.append2(userid, " Screen: Hierarchical Menu Dial Variation10 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
         }
+        else{
+            tv.setBackgroundResource(R.color.red);
+        }
 
     }
 

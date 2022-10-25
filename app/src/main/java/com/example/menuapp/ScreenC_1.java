@@ -50,6 +50,7 @@ public class ScreenC_1 extends BaseActivity {
         if(tv.getText().equals(target))
             worker.schedule(task, 2, TimeUnit.SECONDS);
 
+
     }
 
     public void onPause(){

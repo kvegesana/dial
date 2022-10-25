@@ -221,6 +221,9 @@ public class ScreenC_TTS_9 extends BaseActivity {
                 t2 = new Date().getTime();
                 log.append2(userid, " Screen: Linear Menu Dial Variation9 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
             }
+            else {
+                tv.setBackgroundResource(R.color.red);
+            }
 
         }
     }
