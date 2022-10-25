@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class ScreenC_TTS_1 extends BaseActivity {
 
     LinearLayout lv;
-    int curIndex = -1;
+    int curIndex = 0;
     boolean isInitial = true;
 
     TTS textToSpeech;
@@ -42,7 +42,7 @@ public class ScreenC_TTS_1 extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
-
+        curIndex = 0;
         target = returnCorrectTarget(this.getLocalClassName());
         numberOfInteractions = 0;
         t1 =new Date().getTime();
@@ -60,6 +60,23 @@ public class ScreenC_TTS_1 extends BaseActivity {
         sbu_filter.addAction(SBU_ACTION);
         registerReceiver(sbu_receiver, sbu_filter);
         sv = findViewById(R.id.ScrollViewID);
+        initial();
+    }
+
+    public void initial(){
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                curIndex = 0;
+                TextView tv = (TextView) lv.getChildAt(curIndex);
+                System.out.println(tv);
+                textToSpeech.speakTextView(tv);
+                tv.requestFocus();
+                tv.setBackgroundResource(R.drawable.border);
+            }
+        };
+        final ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
+        worker.schedule(task, 1, TimeUnit.SECONDS);
     }
 
     public void onPause(){
@@ -79,7 +96,9 @@ public class ScreenC_TTS_1 extends BaseActivity {
 
         numberOfInteractions+=1;
         if(isInitial){
-            textToSpeech.playErrorSound();
+            tv = (TextView) lv.getChildAt(curIndex);
+            textToSpeech.speakTextView(tv);
+//            textToSpeech.playErrorSound();
             outOfBounds = true;
             //curIndex = 16;
             isInitial = false;
@@ -103,7 +122,7 @@ public class ScreenC_TTS_1 extends BaseActivity {
             System.out.println("goLeft" + curIndex + " " + tv.getText());
             log.append(userid,"UserID: "+ userid +  " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation1 " + "Button clicked: Left " + "Item selected: " + tv.getText());
         }else{
-            textToSpeech.playErrorSound();
+//            textToSpeech.playErrorSound();
             tv = (TextView) lv.getChildAt(curIndex);
             textToSpeech.speakTextView(tv);
             System.out.println("goLeft " + curIndex + " Out of bounds") ;
@@ -114,11 +133,11 @@ public class ScreenC_TTS_1 extends BaseActivity {
         if(tv.getText().equals(target)){
             tv.setBackgroundResource(R.color.green);
         }
-        if(curIndex > 7){
+        if(curIndex > 9){
 
             sv.smoothScrollTo(0, sv.getHeight());
         }
-        if(curIndex <= 7) {
+        if(curIndex < 6) {
             sv.smoothScrollTo(0,0);
         }
     }
@@ -151,7 +170,7 @@ public class ScreenC_TTS_1 extends BaseActivity {
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Linear Menu Dial Variation1 " + "Button clicked: Right " + "Item selected: " + tv.getText());
 
         }else{
-            textToSpeech.playErrorSound();
+//            textToSpeech.playErrorSound();
             tv = (TextView) lv.getChildAt(curIndex);
             textToSpeech.speakTextView(tv);
             outOfBounds = true;
@@ -162,11 +181,11 @@ public class ScreenC_TTS_1 extends BaseActivity {
         if(tv.getText().equals(target)){
             tv.setBackgroundResource(R.color.green);
         }
-        if(curIndex > 7){
+        if(curIndex > 9){
 
             sv.smoothScrollTo(0, sv.getHeight());
         }
-        if(curIndex <= 7) {
+        if(curIndex < 6) {
             sv.smoothScrollTo(0,0);
         }
     }
@@ -203,6 +222,9 @@ public class ScreenC_TTS_1 extends BaseActivity {
                 worker.schedule(task, 2, TimeUnit.SECONDS);
                 t2 = new Date().getTime();
                 log.append2(userid, " Screen: Linear Menu Dial Variation1 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
+            }
+            else {
+                tv.setBackgroundResource(R.color.red);
             }
 
         }

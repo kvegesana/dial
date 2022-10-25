@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class ScreenC_TTS_4 extends BaseActivity {
 
     LinearLayout lv;
-    int curIndex = -1;
+    int curIndex = 0;
     boolean isInitial = true;
 
     TTS textToSpeech;
@@ -58,9 +58,26 @@ public class ScreenC_TTS_4 extends BaseActivity {
         sbu_filter.addAction(SBU_ACTION);
         registerReceiver(sbu_receiver, sbu_filter);
         sv = findViewById(R.id.ScrollViewID);
+        initial();
     }
 
-    public void onPause(){
+    public void initial() {
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                curIndex = 0;
+                TextView tv = (TextView) lv.getChildAt(curIndex);
+                System.out.println(tv);
+                textToSpeech.speakTextView(tv);
+                tv.requestFocus();
+                tv.setBackgroundResource(R.drawable.border);
+            }
+        };
+        final ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
+        worker.schedule(task, 1, TimeUnit.SECONDS);
+    }
+
+        public void onPause(){
         if(textToSpeech !=null){
             textToSpeech.onPause();
         }
@@ -76,7 +93,9 @@ public class ScreenC_TTS_4 extends BaseActivity {
     public void goLeft(View view) {
         numberOfInteractions+=1;
         if(isInitial){
-            textToSpeech.playErrorSound();
+//            textToSpeech.playErrorSound();
+            tv = (TextView) lv.getChildAt(curIndex);
+            textToSpeech.speakTextView(tv);
             outOfBounds = true;
             //curIndex = 16;
             isInitial = false;
@@ -100,7 +119,7 @@ public class ScreenC_TTS_4 extends BaseActivity {
             System.out.println("goLeft" + curIndex + " " + tv.getText());
             log.append(userid,"UserID: "+ userid +  " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Dial Variation4 " + "Button clicked: Left " + "Item selected: " + tv.getText());
         }else{
-            textToSpeech.playErrorSound();
+//            textToSpeech.playErrorSound();
             tv = (TextView) lv.getChildAt(curIndex);
             textToSpeech.speakTextView(tv);
             System.out.println("goLeft " + curIndex + " Out of bounds") ;
@@ -111,10 +130,10 @@ public class ScreenC_TTS_4 extends BaseActivity {
         if(tv.getText().equals(target)){
             tv.setBackgroundResource(R.color.green);
         }
-        if(curIndex > 7){
+        if(curIndex > 9){
             sv.smoothScrollTo(0, sv.getHeight());
         }
-        if(curIndex <= 7) {
+        if(curIndex < 6) {
             sv.smoothScrollTo(0,0);
         }
     }
@@ -147,7 +166,7 @@ public class ScreenC_TTS_4 extends BaseActivity {
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Linear Menu Dial Variation4 " + "Button clicked: Right " + "Item selected: " + tv.getText());
 
         }else{
-            textToSpeech.playErrorSound();
+//            textToSpeech.playErrorSound();
             tv = (TextView) lv.getChildAt(curIndex);
             textToSpeech.speakTextView(tv);
             System.out.println("goRight " + curIndex + " Out of bounds");
@@ -158,10 +177,10 @@ public class ScreenC_TTS_4 extends BaseActivity {
         if(tv.getText().equals(target)){
             tv.setBackgroundResource(R.color.green);
         }
-        if(curIndex > 7){
+        if(curIndex > 9){
             sv.smoothScrollTo(0, sv.getHeight());
         }
-        if(curIndex <= 7) {
+        if(curIndex < 6) {
             sv.smoothScrollTo(0,0);
         }
     }

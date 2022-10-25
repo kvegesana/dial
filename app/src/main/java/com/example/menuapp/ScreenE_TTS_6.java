@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class ScreenE_TTS_6 extends BaseActivity {
 
     LinearLayout lv,lv1,lv2,lv3, lv4, lv5;
-    int curIndex = -1;
+    int curIndex = 0;
     boolean isInitial = true;
     TextView tv;
     TTS textToSpeech;
@@ -62,6 +62,23 @@ public class ScreenE_TTS_6 extends BaseActivity {
         IntentFilter sbu_filter = new IntentFilter();
         sbu_filter.addAction(SBU_ACTION);
         registerReceiver(sbu_receiver, sbu_filter);
+        initial();
+    }
+
+    public void initial(){
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                curIndex = 0;
+                TextView tv = getTextView();
+                System.out.println(tv);
+                textToSpeech.speakTextView(tv);
+                tv.requestFocus();
+                tv.setBackgroundResource(R.drawable.border);
+            }
+        };
+        final ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
+        worker.schedule(task, 1, TimeUnit.SECONDS);
     }
 
 
@@ -80,7 +97,9 @@ public class ScreenE_TTS_6 extends BaseActivity {
     public void goLeft(View view) {
         numberOfInteractions+=1;
         if(isInitial){
-            curIndex = totalElements;
+            TextView tv = getTextView();
+            textToSpeech.speakTextView(tv);
+//            curIndex = totalElements;
             isInitial = false;
         }
 
@@ -97,7 +116,7 @@ public class ScreenE_TTS_6 extends BaseActivity {
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Grid Menu Dial Variation6 " + "Button clicked: Left " + "Item selected: " + tv.getText());
 
         }else{
-            textToSpeech.playErrorSound();
+//            textToSpeech.playErrorSound();
             tv = getTextView();
             textToSpeech.speakTextView(tv);
             System.out.println("goLeft " + curIndex + " Out of bounds") ;
@@ -112,7 +131,7 @@ public class ScreenE_TTS_6 extends BaseActivity {
     public void goRight(View view) {
         numberOfInteractions+=1;
         if(isInitial){
-            curIndex = -1;
+//            curIndex = -1;
             isInitial = false;
         }
 
@@ -132,7 +151,7 @@ public class ScreenE_TTS_6 extends BaseActivity {
 
 
         }else{
-            textToSpeech.playErrorSound();
+//            textToSpeech.playErrorSound();
             tv = getTextView();
             textToSpeech.speakTextView(tv);
             System.out.println("goRight " + curIndex + " Out of bounds") ;

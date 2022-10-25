@@ -225,6 +225,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
     }
 
     public void back(View view){
+        sv.smoothScrollTo(0,0);
         numberOfInteractions+=1;
         if(counter == 1){
             isFirstMenu = true;
@@ -291,7 +292,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
                 log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation10 " + "Button clicked: Left " + "Item selected: " + tv.getText());
 
             }else{
-                textToSpeech.playErrorSound();
+//                textToSpeech.playErrorSound();
                 TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
                 textToSpeech.speakTextView(tv);
                 System.out.println("goLeft " + curIndexList2 + " Out of bounds") ;
@@ -302,10 +303,10 @@ public class ScreenD_TTS_10 extends BaseActivity {
             if(tv.getText().equals(target)){
                 tv.setBackgroundResource(R.color.green);
             }
-            if(curIndexList2 > 7){
+            if(curIndexList2 > 10){
                 sv.smoothScrollTo(0, sv.getHeight());
             }
-            if(curIndexList2 <= 7) {
+            if(curIndexList2 < 4) {
                 sv.smoothScrollTo(0,0);
             }
         }
@@ -347,7 +348,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
                 System.out.println("goRight " + curIndexList2 + " " + tv.getText());
                 log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Hierarchical Menu Dial Variation10 " + "Button clicked: Right " + "Item selected: " + tv.getText());
             }else{
-                textToSpeech.playErrorSound();
+//                textToSpeech.playErrorSound();
                 TextView tv = (TextView) lv1_2.getChildAt(curIndexList2);
                 textToSpeech.speakTextView(tv);
                 System.out.println("goRight " + curIndexList2 + " Out of bounds");
@@ -358,10 +359,10 @@ public class ScreenD_TTS_10 extends BaseActivity {
             if(tv.getText().equals(target)){
                 tv.setBackgroundResource(R.color.green);
             }
-            if(curIndexList2 > 7){
+            if(curIndexList2 > 10){
                 sv.smoothScrollTo(0, sv.getHeight());
             }
-            if(curIndexList2 <= 7) {
+            if(curIndexList2 < 4) {
                 sv.smoothScrollTo(0,0);
             }
         }
