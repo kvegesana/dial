@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
@@ -63,8 +64,65 @@ public class ScreenE_TTS_8 extends BaseActivity {
         sbu_filter.addAction(SBU_ACTION);
         registerReceiver(sbu_receiver, sbu_filter);
         initial();
+        String classname = this.getLocalClassName();
+        System.out.println("classname: "+classname);
+        int temp_idx = Integer.parseInt(classname.substring(12));
+        System.out.println("id is : " +temp_idx);
+        int target_idx = 0;
+        switch(temp_idx){
+            case 1:
+                target_idx = 9;
+                break;
+            case 2 :
+                target_idx = 12;
+                break;
+            case 3 :
+                target_idx = 17;
+                break;
+            case 4 :
+                target_idx = 11;
+                break;
+            case 5 :
+                target_idx = 14;
+                break;
+            case 6 :
+                target_idx = 19;
+                break;
+            case 7 :
+                target_idx = 16;
+                break;
+            case 8 :
+                target_idx = 6;
+                break;
+            case 9 :
+                target_idx = 5;
+
+                break;
+            case 10 :
+                target_idx = 15;
+
+                break;
+        }
+        System.out.println(target_idx);
+        TextView temp = getTargetTextView(target_idx);
+        temp.setPaintFlags(temp.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+
     }
 
+    public TextView getTargetTextView(int index) {
+        if (index <= 3) {
+            tv = (TextView) lv1.getChildAt(index);
+        } else if (index <= 7) {
+            tv = (TextView) lv2.getChildAt(index % 4);
+        } else if (index <= 11) {
+            tv = (TextView) lv3.getChildAt(index % 4);
+        } else if (index <= 15) {
+            tv = (TextView) lv4.getChildAt(index % 4);
+        } else if (index <= 19) {
+            tv = (TextView) lv5.getChildAt(index % 4);
+        }
+        return tv;
+    }
     public void initial(){
         Runnable task = new Runnable() {
             @Override

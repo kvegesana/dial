@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
@@ -75,6 +76,46 @@ public class ScreenD_TTS_10 extends BaseActivity {
         registerReceiver(sbu_receiver, sbu_filter);
         sv = findViewById(R.id.ScrollViewHierarchicalID);
         initial();
+        String classname = this.getLocalClassName();
+        System.out.println("classname: "+classname);
+        int temp_idx = Integer.parseInt(classname.substring(12));
+        System.out.println("id is : " +temp_idx);
+        int target_idx = 0;
+        switch(temp_idx){
+            case 1:
+                target_idx = 14;
+                break;
+            case 2 :
+                target_idx = 13;
+                break;
+            case 3 :
+                target_idx = 2;
+                break;
+            case 4 :
+                target_idx = 15;
+                break;
+            case 5 :
+                target_idx = 1;
+                break;
+            case 6 :
+                target_idx = 4;
+                break;
+            case 7 :
+                target_idx = 3;
+                break;
+            case 8 :
+                target_idx = 5;
+                break;
+            case 9 :
+                target_idx = 12;
+                break;
+            case 10 :
+                target_idx = 11;
+                break;
+        }
+        System.out.println(target_idx);
+        TextView temp = (TextView) lv1_2.getChildAt(target_idx);
+        temp.setPaintFlags(temp.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
     }
 
     public void initial(){
@@ -178,7 +219,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
                 if (curIndexList2 >= 0 && curIndexList2 < 16) {
                     tv = (TextView) lv1_2.getChildAt(curIndexList2);
                     System.out.println("Selected " + curIndexList2 + " " + tv.getText().toString());
-                } 
+                }
 //                else if(curIndexList2 < 0){
 //                    tv = (TextView) lv1_2.getChildAt(15);
 //                }else{
@@ -209,13 +250,10 @@ public class ScreenD_TTS_10 extends BaseActivity {
 //            System.out.println(target+" "+this.getLocalClassName());
 //            if(tv.getText().equals(target))
 //                worker.schedule(task, 2, TimeUnit.SECONDS);
-        }
+
         log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Hierarchical Menu Dial Variation10 " + "Button clicked: Click " + "Item selected: " + tv.getText());
 
-        if(counter == 0){
-            isFirstMenu = false;
-            counter = 1;
-        }
+
         String target = returnCorrectTarget(this.getLocalClassName());
         if(tv.getText().equals(target)) {
             t2 = new Date().getTime();
@@ -223,6 +261,11 @@ public class ScreenD_TTS_10 extends BaseActivity {
         }
         else{
             tv.setBackgroundResource(R.color.red);
+        }
+        }
+        if(counter == 0){
+            isFirstMenu = false;
+            counter = 1;
         }
 
     }
