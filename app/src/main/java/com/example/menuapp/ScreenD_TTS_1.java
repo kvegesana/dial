@@ -80,11 +80,46 @@ public class ScreenD_TTS_1 extends BaseActivity {
         sv = findViewById(R.id.ScrollViewHierarchicalID);
         initial();
 
+
+    }
+
+    public void initial(){
+
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                curIndexList1 = 0;
+                TextView tv = (TextView) lv1_1.getChildAt(curIndexList1);
+                System.out.println("Initial screen D TTS" + tv.getText());
+                textToSpeech.speakTextView(tv);
+                tv.requestFocus();
+                tv.setBackgroundResource(R.drawable.border);
+            }
+        };
+        final ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
+        worker.schedule(task, 1, TimeUnit.SECONDS);
+    }
+
+    public void onPause(){
+        if(textToSpeech !=null){
+            textToSpeech.onPause();
+        }
+        try {
+            unregisterReceiver(sbu_receiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+        super.onPause();
+    }
+
+
+    public void populate(int index, String[] list, LinearLayout listView){
         String classname = this.getLocalClassName();
         System.out.println("classname: "+classname);
         int temp_idx = Integer.parseInt(classname.substring(12));
         System.out.println("id is : " +temp_idx);
         int target_idx = 0;
+
         switch(temp_idx){
             case 1:
                 target_idx = 14;
@@ -119,40 +154,12 @@ public class ScreenD_TTS_1 extends BaseActivity {
         }
         System.out.println(target_idx);
         TextView temp = (TextView) lv1_2.getChildAt(target_idx);
-        temp.setPaintFlags(temp.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
-    }
-
-    public void initial(){
-
-        Runnable task = new Runnable() {
-            @Override
-            public void run() {
-                curIndexList1 = 0;
-                TextView tv = (TextView) lv1_1.getChildAt(curIndexList1);
-                System.out.println("Initial screen D TTS" + tv.getText());
-                textToSpeech.speakTextView(tv);
-                tv.requestFocus();
-                tv.setBackgroundResource(R.drawable.border);
-            }
-        };
-        final ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
-        worker.schedule(task, 1, TimeUnit.SECONDS);
-    }
-
-    public void onPause(){
-        if(textToSpeech !=null){
-            textToSpeech.onPause();
+        if(index == 0) {
+            temp.setPaintFlags(temp.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         }
-        try {
-            unregisterReceiver(sbu_receiver);
-        }catch (IllegalArgumentException e){
-            e.printStackTrace();
+        else{
+            temp.setPaintFlags(0);
         }
-        super.onPause();
-    }
-
-
-    public void populate(int index, String[] list, LinearLayout listView){
 
         if(index == 0){
             for(int i=0; i< list.length;i++){
