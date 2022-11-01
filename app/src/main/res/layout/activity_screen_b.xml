@@ -24,7 +24,7 @@
     <Button
         android:id="@+id/taskBtn2"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:text="Hierarchical Layout - Talkback"
         android:onClick="openDVariation"
         android:layout_gravity="center"/>
