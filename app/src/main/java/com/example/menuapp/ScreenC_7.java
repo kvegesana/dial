@@ -106,11 +106,11 @@ public class ScreenC_7 extends BaseActivity {
         if (tv.getText().equals(target)) {
             t2 = new Date().getTime();
             worker.schedule(task, 2, TimeUnit.SECONDS);
-            log.append2(userid, " Screen: Linear Menu Talkback Variation1 " +
-                    "Number of interactions: " + numberOfInteractions +
-                    " Time taken: " + (t2 - t1) + " Number of LeftSwipes: " + numberOfLeftSwipes +
-                    " Number of RightSwipes: " + numberOfRightSwipes +
-                    " Number of Clicks: " + numberOfClicks);
+            log.append2(userid, " Screen:Linear Menu Talkback"+","+ "Variation:7" +","+
+                    "Number of interactions:" + numberOfInteractions +","+
+                    "Time taken:" + (t2 - t1) + ","+" Number of LeftSwipes:" + numberOfLeftSwipes +","+
+                    "Number of RightSwipes:" + numberOfRightSwipes +","+
+                    "Number of Clicks:" + numberOfClicks);
         }
     }
 
