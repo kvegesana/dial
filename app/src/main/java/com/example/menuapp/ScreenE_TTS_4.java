@@ -29,7 +29,7 @@ public class ScreenE_TTS_4 extends BaseActivity {
     int totalElements;
     Log log = new Log();
     String userid = null;
-    int numberOfInteractions;
+    int numberOfInteractions, numberOfLeftActions, numberOfRightActions, numberOfClicks;
     long t1,t2;
     String target;
 
@@ -41,6 +41,9 @@ public class ScreenE_TTS_4 extends BaseActivity {
         super.onCreate(savedInstanceState);
         target = returnCorrectTarget(this.getLocalClassName());
         numberOfInteractions = 0;
+        numberOfClicks = 0;
+        numberOfLeftActions = 0;
+        numberOfRightActions = 0;
         t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         textToSpeech = new TTS();
@@ -155,6 +158,7 @@ public class ScreenE_TTS_4 extends BaseActivity {
 
     public void goLeft(View view) {
         numberOfInteractions+=1;
+        numberOfLeftActions+=1;
         if (isInitial) {
             TextView tv = getTextView();
             textToSpeech.speakTextView(tv);
@@ -189,6 +193,7 @@ public class ScreenE_TTS_4 extends BaseActivity {
 
     public void goRight(View view) {
         numberOfInteractions+=1;
+        numberOfRightActions+=1;
         if (isInitial) {
 //            curIndex = -1;
             isInitial = false;
@@ -223,6 +228,7 @@ public class ScreenE_TTS_4 extends BaseActivity {
 
     public void onClick(View view) {
         numberOfInteractions+=1;
+        numberOfClicks+=1;
         if (!isInitial) {
             tv = (TextView) lv1.getChildAt(0);
             if (curIndex >= 0 && curIndex < totalElements) {
@@ -251,8 +257,7 @@ public class ScreenE_TTS_4 extends BaseActivity {
             if(tv.getText().equals(target)) {
                 worker.schedule(task, 2, TimeUnit.SECONDS);
                 t2 = new Date().getTime();
-                log.append2(userid, " Screen: Grid Menu Dial Variation4 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
-            }
+                log.append2(userid, "Screen:Grid Menu Dial, Variation:4, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftActions+", Number of Right rotations:"+numberOfRightActions+", Number of Clicks:"+numberOfClicks+";");}
             else {
                 tv.setBackgroundResource(R.color.red);
             }
