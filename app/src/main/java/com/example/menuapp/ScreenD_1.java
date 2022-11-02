@@ -70,6 +70,7 @@ public class ScreenD_1 extends BaseActivity {
         map.put("Countries", countries);
         map.put("Vegetables", vegetables);
 
+        System.out.println("Karthik screen1"+getIntent().getExtras());
         userid = getIntent().getExtras().getString("UserID");
         mapElementToIndex = new HashMap<>();
         mapElementToIndex.put("Cars", 0);
@@ -226,6 +227,7 @@ public class ScreenD_1 extends BaseActivity {
 
             @Override
             public void run() {
+                intent.putExtra("UserID", userid);
                 startActivity(intent);
             }
         };

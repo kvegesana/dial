@@ -122,6 +122,7 @@ public class ScreenE_7 extends BaseActivity {
 
             @Override
             public void run() {
+                intent.putExtra("UserID", userid);
                 startActivity(intent);
             }
         };

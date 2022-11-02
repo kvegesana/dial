@@ -226,6 +226,7 @@ public class ScreenD_5 extends BaseActivity {
 
             @Override
             public void run() {
+                intent.putExtra("UserID", userid);
                 startActivity(intent);
             }
         };
