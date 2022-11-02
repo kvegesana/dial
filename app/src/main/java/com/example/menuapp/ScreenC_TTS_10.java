@@ -30,7 +30,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
     String userid = null;
     TextView tv;
     boolean outOfBounds = false;
-    int numberOfInteractions;
+    int numberOfInteractions, numberOfLeftActions, numberOfRightActions, numberOfClicks;
     long t1,t2;
     String target;
     ScrollView sv;
@@ -44,6 +44,9 @@ public class ScreenC_TTS_10 extends BaseActivity {
         super.onCreate(savedInstanceState);
         target = returnCorrectTarget(this.getLocalClassName());
         numberOfInteractions = 0;
+        numberOfClicks = 0;
+        numberOfLeftActions = 0;
+        numberOfRightActions = 0;
         t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         textToSpeech = new TTS();
@@ -133,6 +136,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
 
     public void goLeft(View view) {
         numberOfInteractions+=1;
+        numberOfLeftActions+=1;
         if(isInitial){
 
             tv = (TextView) lv.getChildAt(curIndex);
@@ -182,6 +186,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
 
     public void goRight(View view) {
         numberOfInteractions+=1;
+        numberOfRightActions+=1;
         if(isInitial){
            // curIndex = -1;
             isInitial = false;
@@ -230,6 +235,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
 
     public void onClick(View view) {
         numberOfInteractions+=1;
+        numberOfClicks+=1;
         if(!isInitial) {
             if (curIndex >= 0 && curIndex < 16) {
                 tv = (TextView) lv.getChildAt(curIndex);
@@ -243,8 +249,7 @@ public class ScreenC_TTS_10 extends BaseActivity {
             String target = returnCorrectTarget(this.getLocalClassName());
             if(tv.getText().equals(target)) {
                 t2 = new Date().getTime();
-                log.append2(userid, " Screen: Linear Menu Dial Variation10 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
-            }
+                log.append2(userid, "Screen:Linear Menu Dial, Variation:10, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftActions+", Number of Right rotations:"+numberOfRightActions+", Number of Clicks:"+numberOfClicks+";");}
             else {
                 tv.setBackgroundResource(R.color.red);
             }
