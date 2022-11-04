@@ -42,7 +42,8 @@ public class ScreenD_TTS_10 extends BaseActivity {
     TTS textToSpeech;
     Vibrator v;
     String userid = null;
-    int numberOfInteractions;
+    int numberOfInteractions, numberOfLeftActions, numberOfRightActions, numberOfClicks, numberOfBackClicks;
+
     long t1,t2;
     String target;
     ScrollView sv;
@@ -57,6 +58,10 @@ public class ScreenD_TTS_10 extends BaseActivity {
         super.onCreate(savedInstanceState);
         target = returnCorrectTarget(this.getLocalClassName());
         numberOfInteractions = 0;
+        numberOfClicks = 0;
+        numberOfLeftActions = 0;
+        numberOfRightActions = 0;
+        numberOfBackClicks = 0;
         t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         textToSpeech = new TTS();
@@ -194,6 +199,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
 
     public void onClick(View view){
         numberOfInteractions+=1;
+        numberOfBackClicks+=1;
         System.out.println("First Menu "+isFirstMenu);
         System.out.println("Counter "+counter);
         System.out.println(lv1_1.getChildCount() + " "+ lv1_2.getChildCount());
@@ -263,8 +269,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
         String target = returnCorrectTarget(this.getLocalClassName());
         if(tv.getText().equals(target)) {
             t2 = new Date().getTime();
-            log.append2(userid, " Screen: Hierarchical Menu Dial Variation10 " + "Number of interactions: "+numberOfInteractions+" Time taken: "+(t2-t1));
-        }
+            log.append2(userid, "Screen: Hierarchical Menu Dial, Variation:10, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftActions+", Number of Right rotations:"+numberOfRightActions+", Number of Clicks:"+numberOfClicks+", Number of Back Clicks:"+numberOfBackClicks+";");}
         else{
             tv.setBackgroundResource(R.color.red);
         }
@@ -279,6 +284,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
     public void back(View view){
         sv.smoothScrollTo(0,0);
         numberOfInteractions+=1;
+        numberOfBackClicks+=1;
         if(counter == 1){
             isFirstMenu = true;
             for(int i=0; i<16 ;i++){
@@ -311,6 +317,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
 
     public void goLeft(View view) {
         numberOfInteractions+=1;
+        numberOfLeftActions+=1;
         clicks.clear();
         if(isFirstMenu){
 
@@ -366,6 +373,7 @@ public class ScreenD_TTS_10 extends BaseActivity {
 
     public void goRight(View view) {
         numberOfInteractions+=1;
+        numberOfRightActions+=1;
         clicks.clear();
         if(isFirstMenu){
 
