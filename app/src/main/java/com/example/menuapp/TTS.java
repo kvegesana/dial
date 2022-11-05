@@ -29,6 +29,7 @@ public class TTS implements TextToSpeech.OnInitListener {
             textToSpeechIsInitialized = true;
             int result = textToSpeech.setLanguage(Locale.US);
             if (result == android.speech.tts.TextToSpeech.LANG_MISSING_DATA || result == android.speech.tts.TextToSpeech.LANG_NOT_SUPPORTED){
+                System.out.println((result== TextToSpeech.LANG_NOT_SUPPORTED)+" "+(result== TextToSpeech.LANG_MISSING_DATA));
                 CharSequence text = "Language not supported";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);

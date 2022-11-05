@@ -3,6 +3,7 @@ package com.example.menuapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
@@ -51,9 +52,13 @@ public class ScreenC_10 extends BaseActivity {
         setContentView(R.layout.activity_screen_c);
         lv = findViewById(R.id.textList);
         int childCount = lv.getChildCount();
+        String target_2 = returnCorrectTargetTalkback(ScreenC_10.this.getLocalClassName());
         for (int i = 0; i < childCount; ++i) {
             TextView temp = (TextView) lv.getChildAt(i);
             String element = (String) temp.getText().toString();
+            if(element.equals(target_2)){
+                temp.setPaintFlags(temp.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+            }
             mapElementToIndex.put(element, i);
         }
         contentView = findViewById(android.R.id.content);
@@ -69,6 +74,13 @@ public class ScreenC_10 extends BaseActivity {
                         String element = el.substring(0, el.length() - 1);
                         currentIndex = mapElementToIndex.containsKey(element) ?
                                 mapElementToIndex.get(element) : -1;
+                        String target = returnCorrectTargetTalkback(ScreenC_10.this.getLocalClassName());
+                        TextView tv = (TextView) lv.getChildAt(currentIndex);
+                        if(tv.getText().equals(target)){
+                            tv.setBackgroundResource(R.color.green);
+                        }
+                        tv = (TextView) lv.getChildAt(previousIndex);
+                        tv.setBackgroundResource(R.drawable.remove_border);
                         if (currentIndex == previousIndex + 1) {
                             numberOfRightSwipes++;
                             log.append(userid,"UserID: "+ userid +  " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Talkback Variation10 " + "Button clicked: Right " + "Item selected: " + element);

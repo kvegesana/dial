@@ -4,6 +4,7 @@ package com.example.menuapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
@@ -60,10 +61,14 @@ public class ScreenE_8 extends BaseActivity {
         lv5 = lv.findViewById(R.id.screenE_lv5);
         totalElements = lv1.getChildCount() + lv2.getChildCount() + lv3.getChildCount() + lv4.getChildCount() + lv5.getChildCount();
 
+        String target_2 = returnCorrectTargetTalkback(ScreenE_8.this.getLocalClassName());
         for (int i = 0; i < totalElements; ++i) {
             TextView temp = (TextView) getTargetTextView(i);
             String element = temp.getText().toString();
-            mapElementToIndex.put(element, i);
+            if(element.equals(target_2)){
+                temp.setPaintFlags(temp.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+            }
+            mapElementToIndex.put(element,i);
         }
         contentView = findViewById(android.R.id.content);
         contentView.setAccessibilityDelegate(new View.AccessibilityDelegate() {
@@ -78,6 +83,13 @@ public class ScreenE_8 extends BaseActivity {
                         String element = el.substring(0, el.length() - 1);
                         currentIndex = mapElementToIndex.containsKey(element) ?
                                 mapElementToIndex.get(element) : -1;
+                        String target = returnCorrectTargetTalkback(ScreenE_8.this.getLocalClassName());
+                        TextView tv = (TextView) getTargetTextView(currentIndex);
+                        if(tv.getText().equals(target)){
+                            tv.setBackgroundResource(R.color.green);
+                        }
+                        tv = (TextView) getTargetTextView(previousIndex);
+                        tv.setBackgroundResource(R.drawable.rounded_corner);
                         if (currentIndex == previousIndex + 1) {
                             numberOfRightSwipes++;
                             log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Grid Menu Talkback Variation8 " + "Button clicked: Right " + "Item selected: " + element);

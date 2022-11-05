@@ -4,6 +4,7 @@ package com.example.menuapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
@@ -137,6 +138,13 @@ public class ScreenD_1 extends BaseActivity {
                             currentIndex = mapSingleElement.get(levelOneElement).get(element);
                             previousIndex = mapSingleElement.get(levelOneElement).get(previousElement);
                             if (previousIndex != currentIndex) {
+                                String target = returnCorrectTargetTalkback(ScreenD_1.this.getLocalClassName());
+                                TextView tv = (TextView) lv1_2.getChildAt(currentIndex);
+                                if(tv != null && tv.getText().equals(target)){
+                                    tv.setBackgroundResource(R.color.green);
+                                }
+                                tv = (TextView) lv1_2.getChildAt(previousIndex);
+                                tv.setBackgroundResource(R.drawable.remove_border);
                                 if (currentIndex == previousIndex + 1) {
                                     numberOfRightSwipes++;
                                     log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Hierarchical Menu Talkback Variation1 " + "Button clicked: Right " + "Item selected: " + element);
@@ -196,10 +204,14 @@ public class ScreenD_1 extends BaseActivity {
     public void populate(View view) {
         TextView tv = (TextView) view;
         String list[] = map.get(tv.getText().toString());
-
+        String target_2 = returnCorrectTargetTalkback(ScreenD_1.this.getLocalClassName());
         for (int i = 0; i < list.length; i++) {
             tv = (TextView) lv1_2.getChildAt(i);
             tv.setText(list[i]);
+            String element = (String) tv.getText().toString();
+            if(element.equals(target_2)){
+                tv.setPaintFlags(tv.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+            }
         }
 
         tv = (TextView) lv1_2.getChildAt(0);
