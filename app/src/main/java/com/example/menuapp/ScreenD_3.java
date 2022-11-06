@@ -249,7 +249,7 @@ public class ScreenD_3 extends BaseActivity {
         if (tv.getText().equals(target)) {
             t2 = new Date().getTime();
             worker.schedule(task, 2, TimeUnit.SECONDS);
-            log.append2(userid, " Screen:Hierarchical Menu Talkback" + "," + "Variation:1" + "," +
+            log.append2(userid, " Screen:Hierarchical Menu Talkback" + "," + "Variation:3" + "," +
                     "Number of interactions:" + numberOfInteractions + "," +
                     "Time taken:" + (t2 - t1) + "," + " Number of LeftSwipes:" + numberOfLeftSwipes + "," +
                     "Number of RightSwipes:" + numberOfRightSwipes + "," +
