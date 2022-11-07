@@ -86,7 +86,7 @@ public class ScreenE_TTS_5 extends BaseActivity {
                 target_idx = 11;
                 break;
             case 5 :
-                target_idx = 14;
+                target_idx = 13;
                 break;
             case 6 :
                 target_idx = 19;

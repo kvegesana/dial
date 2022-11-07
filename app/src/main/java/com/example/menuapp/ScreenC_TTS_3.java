@@ -76,7 +76,7 @@ public class ScreenC_TTS_3 extends BaseActivity {
                 target_idx = 9;
                 break;
             case 3 :
-                target_idx = 12;
+                target_idx = 11;
                 break;
             case 4 :
                 target_idx = 2;
@@ -110,7 +110,7 @@ public class ScreenC_TTS_3 extends BaseActivity {
             public void run() {
                 curIndex = 0;
                 TextView tv = (TextView) lv.getChildAt(curIndex);
-                System.out.println(tv);
+//                System.out.println(tv);
                 textToSpeech.speakTextView(tv);
                 tv.requestFocus();
                 tv.setBackgroundResource(R.drawable.border);
