@@ -358,10 +358,10 @@ public class ScreenD_TTS_9 extends BaseActivity {
             if(tv.getText().equals(target)){
                 tv.setBackgroundResource(R.color.green);
             }
-            if(curIndexList2 > 10){
+            if(curIndexList2 > 8){
                 sv.smoothScrollTo(0, sv.getHeight());
             }
-            if(curIndexList2 < 4) {
+            if(curIndexList2 < 7) {
                 sv.smoothScrollTo(0,0);
             }
         }
@@ -415,10 +415,10 @@ public class ScreenD_TTS_9 extends BaseActivity {
             if(tv.getText().equals(target)){
                 tv.setBackgroundResource(R.color.green);
             }
-            if(curIndexList2 > 10){
+            if(curIndexList2 > 8){
                 sv.smoothScrollTo(0, sv.getHeight());
             }
-            if(curIndexList2 < 4) {
+            if(curIndexList2 < 7) {
                 sv.smoothScrollTo(0,0);
             }
         }

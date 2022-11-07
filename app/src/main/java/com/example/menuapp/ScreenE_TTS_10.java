@@ -242,6 +242,8 @@ public class ScreenE_TTS_10 extends BaseActivity {
             }
             textToSpeech.speakSelectedTextView(tv);
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime()+ " " +" Screen: Grid Menu Dial Variation10 " + "Button clicked: Click " + "Item selected: " + tv.getText());
+            final ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
+
             String target = returnCorrectTarget(this.getLocalClassName());
             if(tv.getText().equals(target)) {
                 t2 = new Date().getTime();

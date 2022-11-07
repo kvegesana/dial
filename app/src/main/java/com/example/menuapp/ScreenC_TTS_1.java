@@ -178,11 +178,11 @@ public class ScreenC_TTS_1 extends BaseActivity {
         if(tv.getText().equals(target)){
             tv.setBackgroundResource(R.color.green);
         }
-        if(curIndex > 9){
+        if(curIndex > 7){
 
             sv.smoothScrollTo(0, sv.getHeight());
         }
-        if(curIndex < 6) {
+        if(curIndex < 8) {
             sv.smoothScrollTo(0,0);
         }
     }
@@ -227,11 +227,11 @@ public class ScreenC_TTS_1 extends BaseActivity {
         if(tv.getText().equals(target)){
             tv.setBackgroundResource(R.color.green);
         }
-        if(curIndex > 9){
+        if(curIndex > 7){
 
             sv.smoothScrollTo(0, sv.getHeight());
         }
-        if(curIndex < 6) {
+        if(curIndex < 8) {
             sv.smoothScrollTo(0,0);
         }
     }
