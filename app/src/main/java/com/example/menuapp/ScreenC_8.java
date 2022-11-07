@@ -51,6 +51,8 @@ public class ScreenC_8 extends BaseActivity {
 
         setContentView(R.layout.activity_screen_c);
         lv = findViewById(R.id.textList);
+        userid = getIntent().getExtras().getString("UserID");
+
         int childCount = lv.getChildCount();
         String target_2 = returnCorrectTargetTalkback(ScreenC_8.this.getLocalClassName());
         for (int i = 0; i < childCount; ++i) {
@@ -119,11 +121,7 @@ public class ScreenC_8 extends BaseActivity {
         if (tv.getText().equals(target)) {
             t2 = new Date().getTime();
             worker.schedule(task, 2, TimeUnit.SECONDS);
-            log.append2(userid, " Screen:Linear Menu Talkback"+","+ "Variation:8" +","+
-                    "Number of interactions:" + numberOfInteractions +","+
-                    "Time taken:" + (t2 - t1) + ","+" Number of LeftSwipes:" + numberOfLeftSwipes +","+
-                    "Number of RightSwipes:" + numberOfRightSwipes +","+
-                    "Number of Clicks:" + numberOfClicks);
+            log.append2(userid, "Screen:Linear Menu Talkback, Variation:8, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left Rotations:"+numberOfLeftSwipes+", Number of Right rotations:"+numberOfRightSwipes+", Number of Clicks:"+numberOfClicks+";");
         }
     }
 
