@@ -172,7 +172,7 @@ public class ScreenE_TTS_3 extends BaseActivity {
             log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Grid Menu Dial Variation3 " + "Button clicked: Left " + "Item selected: Out of bounds");
         }
         if(tv.getText().equals(target)){
-            tv.setBackgroundResource(R.color.green);
+            tv.setBackgroundResource(R.drawable.rounded_corner_bg_green);
         }
     }
 
@@ -223,7 +223,7 @@ public class ScreenE_TTS_3 extends BaseActivity {
             log.append(userid,"UserID: "+ userid+" " +  "Timestamp: " + new Date().getTime() +" " +" Screen: Grid Menu Dial Variation3 " + "Button clicked: Right " + "Item selected: Out of bounds");
         }
         if(tv.getText().equals(target)){
-            tv.setBackgroundResource(R.color.green);
+            tv.setBackgroundResource(R.drawable.rounded_corner_bg_green);
         }
     }
 
