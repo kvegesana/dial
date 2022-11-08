@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -116,7 +117,7 @@ public class ScreenD_10 extends BaseActivity {
                     if (previousIndex == -1 && mapElementToIndex.containsKey(element)) {
                         previousIndex = 0;
                         previousElement = element;
-                    } else if (mapElementToIndex.containsKey(element)) {
+                    } else if (mapElementToIndex.containsKey(element) && mapElementToIndex.containsKey(previousElement)) {
                         currentIndex = mapElementToIndex.get(element);
                         previousIndex = mapElementToIndex.get(previousElement);
                         if (previousIndex != currentIndex) {
@@ -135,26 +136,35 @@ public class ScreenD_10 extends BaseActivity {
                             previousIndex = 0;
                             previousElement = element;
                         } else {
-                            currentIndex = mapSingleElement.get(levelOneElement).get(element);
-                            previousIndex = mapSingleElement.get(levelOneElement).get(previousElement);
-                            String target = returnCorrectTargetTalkback(ScreenD_10.this.getLocalClassName());
-                            TextView tv = (TextView) lv1_2.getChildAt(currentIndex);
-                            if(tv != null && tv.getText().equals(target)){
-                                tv.setBackgroundResource(R.color.green);
-                            }
-                            tv = (TextView) lv1_2.getChildAt(previousIndex);
-                            tv.setBackgroundResource(R.drawable.remove_border);
-                            if (previousIndex != currentIndex) {
-                                if (currentIndex == previousIndex + 1) {
-                                    numberOfRightSwipes++;
-                                    log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Hierarchical Menu Talkback Variation10 " + "Button clicked: Right " + "Item selected: " + element);
-                                } else if (currentIndex == previousIndex - 1) {
-                                    numberOfLeftSwipes++;
-                                    log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Hierarchical Menu Talkback Variation10 " + "Button clicked: Left " + "Item selected: " + element);
+                            if (mapSingleElement.get(levelOneElement).containsKey(element) && mapSingleElement.get(levelOneElement).containsKey(previousElement)) {
+                                currentIndex = mapSingleElement.get(levelOneElement).get(element);
+                                previousIndex = mapSingleElement.get(levelOneElement).get(previousElement);
+                                if (previousIndex != currentIndex) {
+                                    String target = returnCorrectTargetTalkback(ScreenD_10.this.getLocalClassName());
+                                    TextView tv = (TextView) lv1_2.getChildAt(currentIndex);
+                                    if (tv != null && tv.getText().equals(target)) {
+                                        tv.setBackgroundResource(R.color.green);
+                                    }
+                                    tv = (TextView) lv1_2.getChildAt(previousIndex);
+                                    tv.setBackgroundResource(R.drawable.remove_border);
+                                    if (currentIndex == previousIndex + 1) {
+                                        numberOfRightSwipes++;
+                                        log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Hierarchical Menu Talkback Variation10 " + "Button clicked: Right " + "Item selected: " + element);
+                                    } else if (currentIndex == previousIndex - 1) {
+                                        numberOfLeftSwipes++;
+                                        log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Hierarchical Menu Talkback Variation10 " + "Button clicked: Left " + "Item selected: " + element);
+                                    }
+                                    numberOfInteractions++;
                                 }
-                                numberOfInteractions++;
+                                previousElement = element;
+                            } else {
+                                if (mapElementToIndex.containsKey(element)) {
+                                    currentIndex = mapElementToIndex.get(element);
+                                    numberOfInteractions++;
+                                    previousIndex = currentIndex;
+                                    previousElement = element;
+                                }
                             }
-                            previousElement = element;
                         }
 
                     }
@@ -166,6 +176,12 @@ public class ScreenD_10 extends BaseActivity {
                         levelOneElement = element;
                         numberOfClicks++;
                         numberOfInteractions++;
+                        TextView tv = (TextView) lv1_2.getChildAt(0);
+                        System.out.println(tv.getText());
+                        tv.requestFocus();
+                        tv.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
+                        ScrollView sv = (ScrollView) findViewById(R.id.ScrollViewHierarchicalID);
+                        sv.scrollTo(0, sv.getTop());
                     }
                     log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Hierarchical Menu Talkback Variation10 " + "Button clicked: Click " + "Item selected: " + tv.getText());
                     previousElement = element;
@@ -209,8 +225,8 @@ public class ScreenD_10 extends BaseActivity {
             tv = (TextView) lv1_2.getChildAt(i);
             tv.setText(list[i]);
             String element = (String) tv.getText().toString();
-            if(element.equals(target_2)){
-                tv.setPaintFlags(tv.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+            if (element.equals(target_2)) {
+                tv.setPaintFlags(tv.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             }
         }
 
@@ -250,7 +266,7 @@ public class ScreenD_10 extends BaseActivity {
         if (tv.getText().equals(target)) {
             t2 = new Date().getTime();
             worker.schedule(task, 2, TimeUnit.SECONDS);
-            log.append3(userid, "Screen: Hierarchical Menu Talkback, Variation:10, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftSwipes+", Number of Right rotations:"+numberOfRightSwipes+", Number of Clicks:"+numberOfClicks+";");
+            log.append3(userid, "Screen: Hierarchical Menu Talkback, Variation:10, " + "Number of interactions:" + numberOfInteractions + ", Time taken:" + (t2 - t1) + ", Number of Left rotations:" + numberOfLeftSwipes + ", Number of Right rotations:" + numberOfRightSwipes + ", Number of Clicks:" + numberOfClicks + ";");
         }
     }
 
