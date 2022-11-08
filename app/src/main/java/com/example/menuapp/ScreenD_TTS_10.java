@@ -265,9 +265,20 @@ public class ScreenD_TTS_10 extends BaseActivity {
 
         log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() +" " +" Screen: Hierarchical Menu Dial Variation10 " + "Button clicked: Click " + "Item selected: " + tv.getText());
 
+            Intent intent = new Intent(this, ScreenB.class);
 
+            Runnable task = new Runnable() {
+
+                @Override
+                public void run() {
+                    intent.putExtra("UserID", userid);
+                    startActivity(intent);
+                }
+            };
+            final ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
         String target = returnCorrectTarget(this.getLocalClassName());
         if(tv.getText().equals(target)) {
+            worker.schedule(task, 2, TimeUnit.SECONDS);
             t2 = new Date().getTime();
             log.append2(userid, "Screen: Hierarchical Menu Dial, Variation:10, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftActions+", Number of Right rotations:"+numberOfRightActions+", Number of Clicks:"+numberOfClicks+", Number of Back Clicks:"+numberOfBackClicks+";");}
         else{

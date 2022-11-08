@@ -104,7 +104,7 @@ public class ScreenC_10 extends BaseActivity {
         TextView tv = (TextView) view;
         textToSpeech.speakSelectedTextView(tv);
         log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Talkback Variation10 " + "Button clicked: Click " + "Item selected: " + tv.getText());
-        Intent intent = new Intent(this, ScreenC_10.class);
+        Intent intent = new Intent(this, ScreenB.class);
 
         Runnable task = new Runnable() {
 

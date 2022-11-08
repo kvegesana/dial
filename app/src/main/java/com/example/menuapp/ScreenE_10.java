@@ -129,7 +129,7 @@ public class ScreenE_10 extends BaseActivity {
         log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Grid Menu Talkback Variation10 " + "Button clicked: Click " + "Item selected: " + tv.getText());
         numberOfClicks++;
         numberOfInteractions++;
-        Intent intent = new Intent(this, ScreenE_10.class);
+        Intent intent = new Intent(this, ScreenB.class);
 
         Runnable task = new Runnable() {
 
