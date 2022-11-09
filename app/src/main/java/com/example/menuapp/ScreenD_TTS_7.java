@@ -42,7 +42,7 @@ public class ScreenD_TTS_7 extends BaseActivity {
     TTS textToSpeech;
     Vibrator v;
     String userid = null;
-    int numberOfInteractions, numberOfLeftActions, numberOfRightActions, numberOfClicks, numberOfBackClicks;
+    int numberOfWrongClicks, numberOfInteractions, numberOfLeftActions, numberOfRightActions, numberOfClicks, numberOfBackClicks;
 
     long t1,t2;
     String target;
@@ -62,6 +62,8 @@ public class ScreenD_TTS_7 extends BaseActivity {
         numberOfLeftActions = 0;
         numberOfRightActions = 0;
         numberOfBackClicks = 0;
+        numberOfWrongClicks=0;
+
         t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         textToSpeech = new TTS();
@@ -264,8 +266,9 @@ public class ScreenD_TTS_7 extends BaseActivity {
             if(tv.getText().equals(target)) {
                 worker.schedule(task, 2, TimeUnit.SECONDS);
                 t2 = new Date().getTime();
-                log.append2(userid, "Screen: Hierarchical Menu Dial, Variation:7, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftActions+", Number of Right rotations:"+numberOfRightActions+", Number of Clicks:"+numberOfClicks+", Number of Back Clicks:"+numberOfBackClicks+";");}
+                log.append2(userid, "Screen: Hierarchical Menu Dial, Variation:7, Target:"+target  + ", Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftActions+", Number of Right rotations:"+numberOfRightActions+", Number of Clicks:"+numberOfClicks+", Number of wrong clicks:"+numberOfWrongClicks+", Number of Back Clicks:"+numberOfBackClicks+";");}
             else{
+                numberOfWrongClicks+=1;
                 tv.setBackgroundResource(R.color.red);
             }
         }

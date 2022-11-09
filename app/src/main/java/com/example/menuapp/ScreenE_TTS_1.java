@@ -29,7 +29,7 @@ public class ScreenE_TTS_1 extends BaseActivity {
     int totalElements;
     Log log = new Log();
     String userid = null;
-    int numberOfInteractions, numberOfLeftActions, numberOfRightActions, numberOfClicks;
+    int numberOfWrongClicks, numberOfInteractions, numberOfLeftActions, numberOfRightActions, numberOfClicks;
     long t1,t2;
     String target;
 
@@ -44,6 +44,8 @@ public class ScreenE_TTS_1 extends BaseActivity {
         numberOfClicks = 0;
         numberOfLeftActions = 0;
         numberOfRightActions = 0;
+        numberOfWrongClicks=0;
+
         t1 =new Date().getTime();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         textToSpeech = new TTS();
@@ -243,8 +245,9 @@ public class ScreenE_TTS_1 extends BaseActivity {
                 System.out.println("********************");
                 worker.schedule(task, 2, TimeUnit.SECONDS);
                 t2 = new Date().getTime();
-                log.append2(userid, "Screen:Grid Menu Dial, Variation:1, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftActions+", Number of Right rotations:"+numberOfRightActions+", Number of Clicks:"+numberOfClicks+";");}
+                log.append2(userid, "Screen:Grid Menu Dial, Variation:1, Target:"+target + ", Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftActions+", Number of Right rotations:"+numberOfRightActions+", Number of Clicks:"+numberOfClicks+", Number of wrong clicks:"+numberOfWrongClicks+";");}
             else {
+                numberOfWrongClicks+=1;
                 tv.setBackgroundResource(R.color.red);
             }
 
