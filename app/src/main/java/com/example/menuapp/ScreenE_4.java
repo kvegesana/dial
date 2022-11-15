@@ -31,6 +31,7 @@ public class ScreenE_4 extends BaseActivity {
     int numberOfLeftSwipes;
     int numberOfRightSwipes;
     int numberOfClicks;
+    int numberOfWrongClicks;
     int previousIndex = -1;
     int currentIndex = -1;
     long t1, t2;
@@ -49,6 +50,7 @@ public class ScreenE_4 extends BaseActivity {
         numberOfLeftSwipes = 0;
         numberOfClicks = 0;
         numberOfRightSwipes = 0;
+        numberOfWrongClicks = 0;
         t1 = new Date().getTime();
 
         setContentView(R.layout.activity_screen_e);
@@ -66,10 +68,10 @@ public class ScreenE_4 extends BaseActivity {
         for (int i = 0; i < totalElements; ++i) {
             TextView temp = (TextView) getTargetTextView(i);
             String element = temp.getText().toString();
-            if(element.equals(target_2)){
-                temp.setPaintFlags(temp.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+            if (element.equals(target_2)) {
+                temp.setPaintFlags(temp.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             }
-            mapElementToIndex.put(element,i);
+            mapElementToIndex.put(element, i);
         }
         contentView = findViewById(android.R.id.content);
         contentView.setAccessibilityDelegate(new View.AccessibilityDelegate() {
@@ -86,7 +88,7 @@ public class ScreenE_4 extends BaseActivity {
                                 mapElementToIndex.get(element) : -1;
                         String target = returnCorrectTargetTalkback(ScreenE_4.this.getLocalClassName());
                         TextView tv = (TextView) getTargetTextView(currentIndex);
-                        if(tv.getText().equals(target)){
+                        if (tv.getText().equals(target)) {
                             tv.setBackgroundResource(R.color.green);
                         }
                         tv = (TextView) getTargetTextView(previousIndex);
@@ -147,7 +149,9 @@ public class ScreenE_4 extends BaseActivity {
         if (tv.getText().equals(target)) {
             t2 = new Date().getTime();
             worker.schedule(task, 2, TimeUnit.SECONDS);
-            log.append3(userid, "Screen:Grid Menu Talkback, Variation:4, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left rotations:"+numberOfLeftSwipes+", Number of Right rotations:"+numberOfRightSwipes+", Number of Clicks:"+numberOfClicks+";");
+            log.append3(userid, "Screen:Grid Menu Talkback, Variation:4, Target:" + target + ", Number of interactions:" + numberOfInteractions + ", Time taken:" + (t2 - t1) + ", Number of Left rotations:" + numberOfLeftSwipes + ", Number of Right rotations:" + numberOfRightSwipes + ", Number of Clicks:" + numberOfClicks + ", Number of wrong clicks:" + numberOfWrongClicks + ";");
+        } else {
+            numberOfWrongClicks++;
         }
 
     }

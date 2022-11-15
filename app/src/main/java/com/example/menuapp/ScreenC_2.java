@@ -31,6 +31,7 @@ public class ScreenC_2 extends BaseActivity {
     int numberOfLeftSwipes;
     int numberOfRightSwipes;
     int numberOfClicks;
+    int numberOfWrongClicks;
     int previousIndex = -1;
     int currentIndex = -1;
     long t1, t2;
@@ -48,6 +49,7 @@ public class ScreenC_2 extends BaseActivity {
         numberOfLeftSwipes = 0;
         numberOfClicks = 0;
         numberOfRightSwipes = 0;
+        numberOfWrongClicks = 0;
         t1 = new Date().getTime();
 
         setContentView(R.layout.activity_screen_c);
@@ -59,8 +61,8 @@ public class ScreenC_2 extends BaseActivity {
         for (int i = 0; i < childCount; ++i) {
             TextView temp = (TextView) lv.getChildAt(i);
             String element = (String) temp.getText().toString();
-            if(element.equals(target_2)){
-                temp.setPaintFlags(temp.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+            if (element.equals(target_2)) {
+                temp.setPaintFlags(temp.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             }
             mapElementToIndex.put(element, i);
         }
@@ -79,17 +81,17 @@ public class ScreenC_2 extends BaseActivity {
                                 mapElementToIndex.get(element) : -1;
                         String target = returnCorrectTargetTalkback(ScreenC_2.this.getLocalClassName());
                         TextView tv = (TextView) lv.getChildAt(currentIndex);
-                        if(tv.getText().equals(target)){
+                        if (tv.getText().equals(target)) {
                             tv.setBackgroundResource(R.color.green);
                         }
                         tv = (TextView) lv.getChildAt(previousIndex);
                         tv.setBackgroundResource(R.drawable.remove_border);
                         if (currentIndex == previousIndex + 1) {
                             numberOfRightSwipes++;
-                            log.append(userid,"UserID: "+ userid +  " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Talkback Variation2 " + "Button clicked: Right " + "Item selected: " + element);
+                            log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Linear Menu Talkback Variation2 " + "Button clicked: Right " + "Item selected: " + element);
                         } else if (currentIndex == previousIndex - 1) {
                             numberOfLeftSwipes++;
-                            log.append(userid,"UserID: "+ userid +  " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Talkback Variation2 " + "Button clicked: Left " + "Item selected: " + element);
+                            log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Linear Menu Talkback Variation2 " + "Button clicked: Left " + "Item selected: " + element);
                         }
                         numberOfInteractions++;
                         previousIndex = currentIndex;
@@ -104,7 +106,7 @@ public class ScreenC_2 extends BaseActivity {
     public void onClick(View view) {
         TextView tv = (TextView) view;
         textToSpeech.speakSelectedTextView(tv);
-        log.append(userid,"UserID: "+ userid+ " " + "Timestamp: " + new Date().getTime() + " "+" Screen: Linear Menu Talkback Variation2 " + "Button clicked: Click " + "Item selected: " + tv.getText());
+        log.append(userid, "UserID: " + userid + " " + "Timestamp: " + new Date().getTime() + " " + " Screen: Linear Menu Talkback Variation2 " + "Button clicked: Click " + "Item selected: " + tv.getText());
         numberOfClicks++;
         numberOfInteractions++;
         Intent intent = new Intent(this, ScreenC_3.class);
@@ -124,7 +126,10 @@ public class ScreenC_2 extends BaseActivity {
         if (tv.getText().equals(target)) {
             t2 = new Date().getTime();
             worker.schedule(task, 2, TimeUnit.SECONDS);
-            log.append3(userid, "Screen:Linear Menu Talkback, Variation:2, " + "Number of interactions:"+numberOfInteractions+", Time taken:"+(t2-t1)+", Number of Left Rotations:"+numberOfLeftSwipes+", Number of Right rotations:"+numberOfRightSwipes+", Number of Clicks:"+numberOfClicks+";");
+            log.append3(userid, "Screen:Linear Menu Talkback, Variation:2, Target:" + target + ", Number of interactions:" + numberOfInteractions + ", Time taken:" + (t2 - t1) + ", Number of Left Rotations:" + numberOfLeftSwipes + ", Number of Right rotations:" + numberOfRightSwipes + ", Number of Clicks:" + numberOfClicks + ", Number of wrong clicks:" + numberOfWrongClicks + ";");
+        }
+        else {
+            numberOfWrongClicks++;
         }
     }
 

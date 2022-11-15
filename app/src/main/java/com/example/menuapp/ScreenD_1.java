@@ -39,6 +39,7 @@ public class ScreenD_1 extends BaseActivity {
     int numberOfLeftSwipes;
     int numberOfRightSwipes;
     int numberOfClicks;
+    int numberOfWrongClicks;
     int previousIndex = -1;
     int currentIndex = -1;
     long t1, t2;
@@ -61,6 +62,7 @@ public class ScreenD_1 extends BaseActivity {
         numberOfLeftSwipes = 0;
         numberOfClicks = 0;
         numberOfRightSwipes = 0;
+        numberOfWrongClicks = 0;
         t1 = new Date().getTime();
 
         setContentView(R.layout.activity_screen_d);
@@ -266,7 +268,9 @@ public class ScreenD_1 extends BaseActivity {
         if (tv.getText().equals(target)) {
             t2 = new Date().getTime();
             worker.schedule(task, 2, TimeUnit.SECONDS);
-            log.append3(userid, "Screen: Hierarchical Menu Talkback, Variation:1, " + "Number of interactions:" + numberOfInteractions + ", Time taken:" + (t2 - t1) + ", Number of Left rotations:" + numberOfLeftSwipes + ", Number of Right rotations:" + numberOfRightSwipes + ", Number of Clicks:" + numberOfClicks + ";");
+            log.append3(userid, "Screen: Hierarchical Menu Talkback, Variation:1, Target:" + target + ", Number of interactions:" + numberOfInteractions + ", Time taken:" + (t2 - t1) + ", Number of Left rotations:" + numberOfLeftSwipes + ", Number of Right rotations:" + numberOfRightSwipes + ", Number of Clicks:" + numberOfClicks + ", Number of wrong clicks:" + numberOfWrongClicks + ";");
+        } else {
+            numberOfWrongClicks++;
         }
     }
 
