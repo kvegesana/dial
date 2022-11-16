@@ -9,12 +9,12 @@ public class BaseActivity extends Activity {
             "Mango", "Pear", "Kiwi", "Pineapple", "Peach"};
     String[] orderForE = new String[]{"Green", "Porshe", "UK", "Cyan", "Melon",
             "India", "Honda", "BMW", "France", "White"};
-    String[] orderForCTalkback = new String[]{"Mango", "Banana", "Guava", "Pear", "Lychee",
-            "Orange", "Kiwi", "Pineapple", "Blueberry", "Peach"};
-    String[] orderForDTalkback = new String[]{"Banana", "Papaya", "Guava", "Watermelon", "Lychee",
-            "Mango", "Pear", "Kiwi", "Pineapple", "Peach"};
-    String[] orderForETalkback = new String[]{"Apple", "Audi", "USA", "Red", "KIA",
-            "India", "Dodge", "Cherry", "Kiwi", "Japan"};
+    String[] orderForCTalkback = new String[]{"Blueberry", "Kiwi", "Apple", "Watermelon", "Grapes",
+            "Peach", "Plum", "Banana", "Pineapple", "Papaya"};
+    String[] orderForDTalkback = new String[]{"Lychee", "Papaya", "Plum", "Strawberry", "Guava",
+            "Pineapple", "Orange", "Pear", "Watermelon", "Blueberry"};
+    String[] orderForETalkback = new String[]{"USA", "Mango", "Berry", "Kiwi", "GMC",
+            "Cherry", "Dodge", "Banana", "Ford", "Red"};
 
     public String returnCorrectTarget(String className) {
         char order = className.charAt(6);
