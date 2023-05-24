@@ -29,6 +29,9 @@ public class BaseActivity extends Activity {
         else if(order=='E'){
             return  orderForE[idx-1];
         }
+        else if(order=='F'){
+            return "Finish";
+        }
         return "";
     }
     public String returnCorrectTargetTalkback(String className) {
@@ -43,6 +46,9 @@ public class BaseActivity extends Activity {
         }
         else if(order=='E'){
             return  orderForETalkback[idx-1];
+        }
+        else if(order=='F'){
+            return "Finish";
         }
         return "";
     }

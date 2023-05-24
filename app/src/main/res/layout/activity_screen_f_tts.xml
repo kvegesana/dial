@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/screenF_lv"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="150dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:id="@+id/textView"
+            android:text=""
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/screenF_lv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/val1"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="q" />
+
+        <TextView
+            android:id="@+id/val2"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="w" />
+
+        <TextView
+            android:id="@+id/val3"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="e" />
+
+        <TextView
+            android:id="@+id/val4"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="r" />
+
+        <TextView
+            android:id="@+id/val5"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="t" />
+
+        <TextView
+            android:id="@+id/val6"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="y" />
+
+        <TextView
+            android:id="@+id/val7"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="u" />
+
+        <TextView
+            android:id="@+id/val8"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="i" />
+
+        <TextView
+            android:id="@+id/val9"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="o" />
+
+        <TextView
+            android:id="@+id/val10"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="p" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/screenF_lv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="9">
+
+        <TextView
+            android:id="@+id/val11"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="a" />
+
+        <TextView
+            android:id="@+id/val12"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="s" />
+
+        <TextView
+            android:id="@+id/val13"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="d" />
+
+        <TextView
+            android:id="@+id/val14"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="f" />
+
+        <TextView
+            android:id="@+id/val15"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="g" />
+
+        <TextView
+            android:id="@+id/val16"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="h" />
+
+        <TextView
+            android:id="@+id/val17"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="j" />
+
+        <TextView
+            android:id="@+id/val18"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="k" />
+
+        <TextView
+            android:id="@+id/val19"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="l" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/screenF_lv3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="9">
+
+        <TextView
+            android:id="@+id/val20"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="Caps" />
+
+        <TextView
+            android:id="@+id/val21"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="z" />
+
+        <TextView
+            android:id="@+id/val22"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="x" />
+
+        <TextView
+            android:id="@+id/val23"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="c" />
+
+        <TextView
+            android:id="@+id/val24"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="v" />
+
+        <TextView
+            android:id="@+id/val25"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="b" />
+
+        <TextView
+            android:id="@+id/val26"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="n" />
+
+        <TextView
+            android:id="@+id/val27"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="m" />
+
+        <TextView
+            android:id="@+id/val28"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="Del" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/screenF_lv4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <TextView
+            android:id="@+id/val29"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="Numbers" />
+
+        <TextView
+            android:id="@+id/val30"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1.75"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="Space" />
+
+        <TextView
+            android:id="@+id/val31"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="0.5"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="@string/at_symbol" />
+
+        <TextView
+            android:id="@+id/val32"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="0.5"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="." />
+
+        <TextView
+            android:id="@+id/val33"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1.25"
+            android:background="@drawable/rounded_corner"
+            android:focusable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="1dp"
+            android:text="Finish" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

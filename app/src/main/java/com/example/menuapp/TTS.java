@@ -65,12 +65,57 @@ public class TTS implements TextToSpeech.OnInitListener {
         }
     }
 
+    public void speakTextView(TextView tv,boolean isCaps){
+
+        if(TTS.textToSpeechIsInitialized) {
+            if(tv.getText().equals(".")){
+                textToSpeech.speak("Period", TextToSpeech.QUEUE_FLUSH, null);
+            }
+            else if(tv.getText().equals("/")){
+                textToSpeech.speak("Forward Slash", TextToSpeech.QUEUE_FLUSH, null);
+            }
+            else if(isCaps && (tv.getText().length()==1 && tv.getText().charAt(0)>='a' && tv.getText().charAt(0)<='z')) {
+                textToSpeech.speak("Capital "+tv.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+            }
+            else {
+                textToSpeech.speak(tv.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+            }
+
+            long[] pattern = {0, 15, 10,15};
+            v.vibrate(pattern, -1);
+        }else{
+            System.out.println("Not initialized yet");
+        }
+    }
+
     public void speakSelectedTextView(TextView tv){
 
         if(TTS.textToSpeechIsInitialized) {
 
             textToSpeech.speak(tv.getText().toString() + " is selected", TextToSpeech.QUEUE_FLUSH, null);
 
+            long[] pattern = {0, 10, 20,30};
+            v.vibrate(pattern, -1);
+        }else{
+            System.out.println("Not initialized yet");
+        }
+    }
+
+    public void speakSelectedTextView(TextView tv,boolean isCaps){
+
+        if(TTS.textToSpeechIsInitialized) {
+            if(tv.getText().equals(".")){
+                textToSpeech.speak("Period"+" is selected", TextToSpeech.QUEUE_FLUSH, null);
+            }
+            else if(tv.getText().equals("/")){
+                textToSpeech.speak("Forward Slash"+" is selected", TextToSpeech.QUEUE_FLUSH, null);
+            }
+            else if(isCaps && (tv.getText().length()==1 && tv.getText().charAt(0)>='a' && tv.getText().charAt(0)<='z')) {
+                textToSpeech.speak("Capital "+tv.getText().toString() + " is selected", TextToSpeech.QUEUE_FLUSH, null);
+            }
+            else{
+                textToSpeech.speak(tv.getText().toString() + " is selected", TextToSpeech.QUEUE_FLUSH, null);
+            }
             long[] pattern = {0, 10, 20,30};
             v.vibrate(pattern, -1);
         }else{

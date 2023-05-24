@@ -37,6 +37,12 @@ public class ScreenB extends Activity {
         startActivity(intent);
     }
 
+    public void openFVariation(View view){
+        Intent intent = new Intent(this, VariationF.class);
+        intent.putExtra("UserID", userId);
+        startActivity(intent);
+    }
+
     public void openCTTSVariation(View view){
         Intent intent = new Intent(this, VariationC_TTS.class);
         intent.putExtra("UserID", userId);
@@ -52,6 +58,12 @@ public class ScreenB extends Activity {
     public void openETTSVariation(View view) {
         Intent intent = new Intent(this, VariationE_TTS.class);
         intent.putExtra("UserID", userId);
+        startActivity(intent);
+    }
+
+    public void openFTTSVariation(View view) {
+        Intent intent = new Intent(this,VariationF_TTS.class);
+        intent.putExtra("UserID",userId);
         startActivity(intent);
     }
 }
