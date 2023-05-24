@@ -56,6 +56,8 @@
         <activity android:name="com.example.menuapp.VariationC_TTS" />
         <activity android:name="com.example.menuapp.VariationD_TTS" />
         <activity android:name="com.example.menuapp.VariationE_TTS" />
+        <activity android:name="com.example.menuapp.VariationF_TTS" />
+        <activity android:name="com.example.menuapp.VariationF" />
         <activity android:name="com.example.menuapp.ScreenC_1" />
         <activity android:name="com.example.menuapp.ScreenC_2" />
         <activity android:name="com.example.menuapp.ScreenC_3" />
@@ -116,7 +118,26 @@
         <activity android:name="com.example.menuapp.ScreenE_TTS_8" />
         <activity android:name="com.example.menuapp.ScreenE_TTS_9" />
         <activity android:name="com.example.menuapp.ScreenE_TTS_10" />
-
+        <activity android:name="com.example.menuapp.ScreenF_TTS_1" />
+        <activity android:name="com.example.menuapp.ScreenF_TTS_2" />
+        <activity android:name="com.example.menuapp.ScreenF_TTS_3" />
+        <activity android:name="com.example.menuapp.ScreenF_TTS_4" />
+        <activity android:name="com.example.menuapp.ScreenF_TTS_5" />
+        <activity android:name="com.example.menuapp.ScreenF_TTS_6" />
+        <activity android:name="com.example.menuapp.ScreenF_TTS_7" />
+        <activity android:name="com.example.menuapp.ScreenF_TTS_8" />
+        <activity android:name="com.example.menuapp.ScreenF_TTS_9" />
+        <activity android:name="com.example.menuapp.ScreenF_TTS_10" />
+        <activity android:name="com.example.menuapp.ScreenF_1" />
+        <activity android:name="com.example.menuapp.ScreenF_2" />
+        <activity android:name="com.example.menuapp.ScreenF_3" />
+        <activity android:name="com.example.menuapp.ScreenF_4" />
+        <activity android:name="com.example.menuapp.ScreenF_5" />
+        <activity android:name="com.example.menuapp.ScreenF_6" />
+        <activity android:name="com.example.menuapp.ScreenF_7" />
+        <activity android:name="com.example.menuapp.ScreenF_8" />
+        <activity android:name="com.example.menuapp.ScreenF_9" />
+        <activity android:name="com.example.menuapp.ScreenF_10" />
         <service
             android:name="com.example.menuapp.DialService"
             android:enabled="true"
